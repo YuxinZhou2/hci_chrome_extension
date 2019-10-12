@@ -1,16 +1,16 @@
 {
-    "manifest_version":2,
+  "manifest_version": 2,
 
-    "name": "Spent time on website",
-    "description": "This extension records the time spent on a website.",
-    "version": "1.0",
+  "name": "Spent time on website",
+  "description": "This extension records the time spent on a website.",
+  "version": "1.0",
 
-    "browser_action": {
-        "default_popup": "popup.html"
-    },
-    "background":{
-        "scripts":["moment.js","background.js"],
-        "persistent": false
-    },
-    "permissions":["notifications"]
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["moment.js", "background.js"],
+    "persistent": false
+  },
+  "permissions": ["notifications"]
 }
