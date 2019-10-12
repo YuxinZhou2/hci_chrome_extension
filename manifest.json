@@ -1,7 +1,6 @@
 {
   "manifest_version": 2,
-
-  "name": "Spent time on website",
+  "name": "Mindful",
   "description": "This extension records the time spent on a website.",
   "version": "1.0",
 
