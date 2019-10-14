@@ -9,8 +9,8 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["jquery-3.4.1", "content.js"],
+      "matches": ["https://mail.google.com/*"],
+      "js": ["jquery-3.4.1.min.js", "content.js"],
       "css": ["css/questions.css"]
     }
   ],
