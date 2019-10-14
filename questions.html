@@ -3,33 +3,24 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
   <body>
-    <a href="popup.html"><button>Back</button></a>
-    <h1>Questions</h1>
-    <label for="questionType">Type</label>
-    <select id="questionType">
-      <option value="coding">Coding</option>
-      <option value="languages">Languages</option>
-      <option value="customized">Customized</option>
-    </select>
-    <br>
-    <label for="repeatInterval">Repeat Interval</label>
-    <select id="repeatInterval">
-      <option value="5min">5</option>
-      <option value="10min">10</option>
-      <option value="15min">15</option>
-      <option value="25min">25</option>
-      <option value="30min">30</option>
-      <option value="45min">45</option>
-      <option value="60min">60</option>
-    </select>
-    <br>
-    <label for="nbOfQuestions"># of Questions</label>
-    <select id="nbOfQuestions">
-      <option value="1 question">1</option>
-      <option value="2 question">2</option>
-      <option value="3 question">3</option>
-      <option value="5 questions">5</option>
-      <option value="10 questions">10</option>
-    </select>
+    <div class="bg-modal">
+      <div class="question-modal">
+        <div class="question">
+          <label>Which statement is true regarding an object?</label>
+        </div>
+        <div class="choice-container">
+          <button class="choice-buttons">
+            An object is what classes instantiated are from
+          </button>
+          <button class="choice-buttons">
+            An object is an instance of a class
+          </button>
+          <button class="choice-buttons">An object is a variable</button>
+          <button class="choice-buttons">
+            An object is a reference to an attribute
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

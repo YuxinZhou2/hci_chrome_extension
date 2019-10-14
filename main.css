@@ -1,5 +1,50 @@
 body {
-    width: 250px;
-    height: 150px;
-    margin: 15px;
+  width: 250px;
+  height: 150px;
+  margin: 15px;
+}
+
+.choice-buttons {
+  background-color: white;
+  border-color: black;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.choice-buttons:hover {
+  background-color: #fafafa;
+}
+
+.bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rbga(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-modal {
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  position: relative;
+  text-align: center;
+}
+
+.choice-container {
+  max-width: 800px;
+  margin: 50px auto;
+  display: block;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  display: block;
+  margin: 15px auto;
+  padding: 8px;
+  border: 1px solid gray;
 }

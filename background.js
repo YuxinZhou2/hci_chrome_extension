@@ -1,21 +1,8 @@
-function startTime() {
-  var start = moment();
-  var timer = setInterval(function() {
-    var diff = moment().diff(start, "seconds");
-    updateTime(diff);
-  });
-}
+chrome.tabs.onUpdated.addListener(blacklistSiteEntered);
 
-function notifyUser() {
-  var opts = {
-    type: "basic",
-    title: "",
-    message: ""
+function blacklistSiteEntered(tabId, changeInfo, tab) {
+  let msg = {
+    txt: "hello"
   };
-  var idBase = "";
-  var id =
-    idBase +
-    chrome.notifications.create(id, opts, function() {
-      console.log(idBase + "created");
-    });
+  chrome.tabs.sendMessage(tabId, msg);
 }
