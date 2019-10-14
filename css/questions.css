@@ -1,20 +1,3 @@
-body {
-  width: 250px;
-  height: 150px;
-  margin: 15px;
-}
-
-.choice-buttons {
-  background-color: white;
-  border-color: black;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-}
-.choice-buttons:hover {
-  background-color: #fafafa;
-}
-
 .bg-modal {
   width: 100%;
   height: 100%;
