@@ -3,14 +3,39 @@ body {
   height: 150px;
   margin: 15px;
 }
-
-.choice-buttons {
-  background-color: white;
-  border-color: black;
+h1 {
   text-align: center;
-  font-size: 16px;
-  cursor: pointer;
 }
-.choice-buttons:hover {
-  background-color: #fafafa;
+h2 {
+  text-align: center;
 }
+
+label {
+  font-size: 15px;
+}
+
+button {
+  margin: 4px;
+  padding: 5px;
+}
+
+/*-----Popup home page--------*/
+.coding-settings {
+  /*display: none;*/
+  position: relative;
+}
+.languages-settings {
+  display: none;
+}
+
+.customize-settings {
+  display: none;
+}
+
+.back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/*-----Popup Blacklist page-----*/

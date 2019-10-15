@@ -4,7 +4,7 @@ function gotMessage(message, sender, response) {
   console.log(message.txt);
   if (message.txt === "hello") {
     // Load the function after DOM ready.
-
+    event.preventDefault();
     //var link1 = chrome.extension.getURL("img/MailGet.png"); //Get absolute path of the file residing your extension.
     var t1 =
       '<div class="bg-modal">' +
@@ -31,11 +31,5 @@ function gotMessage(message, sender, response) {
 
     //click on injected mailget icon.
     //event.preventDefault(); //first stop default behaviour of anchor.
-    //$(".bg-modal").css("display", "block"); //Show pop-up background.
-    // $(".question-modal").css("display", "block"); //Show pop-up div.
-    //Inject dynamically generated html from here( However i've used a string only).
-    $("#user").html(
-      "MailGet is an online Email Management Service which allow you to Send Bulk and Drip Emails<br><br>"
-    );
   }
 }
