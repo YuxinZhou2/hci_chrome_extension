@@ -21,32 +21,33 @@
   text-align: center;
   margin: 50px auto;
   justify-content: center;
-  align-items: center;
   border-radius: 4px;
 }
 
-.question {
+.question label {
   padding: 20px;
-  font-size: 30px;
-  position: relative;
-  top: 10px;
+  font-size: 20px;
+  position: absolute;
   text-align: center;
   margin: 15px auto;
+  -webkit-text-fill-color: black;
+  top: 10px;
+  left: 25%;
 }
 
-.choice-container {
+.choice-container button {
   max-width: 800px;
   margin: 50px;
   display: block;
-  justify-content: left;
   align-items: center;
   position: relative;
+  top: 100px;
 }
 
 button {
   font-size: 20px;
   display: block;
-  margin: 15px auto;
+  margin: 15px auto !important;
   padding: 8px;
   border: 1px solid gray;
   border-radius: 4px;
@@ -61,6 +62,8 @@ button:hover {
   justify-content: center;
   position: absolute;
   margin: 20px auto !important;
+  top: 300px;
+  left: 450px;
 }
 
 #access-website {
@@ -72,5 +75,19 @@ button:hover {
 }
 
 #close-tab {
-  background-color: green;
+  background-color: #74df00;
+}
+
+.question2 {
+  display: none;
+}
+
+.question2 label {
+  padding: 20px;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  -webkit-text-fill-color: black;
+  top: 10px;
+  left: 35%;
 }
