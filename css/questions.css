@@ -71,11 +71,12 @@ button:hover {
 }
 
 #another-question {
-  background-color: yellow;
+  background-color: #2e9afe;
 }
 
 #close-tab {
   background-color: #74df00;
+  display: none;
 }
 
 .question2 {
