@@ -55,3 +55,22 @@ button {
 button:hover {
   background-color: #fafafa;
 }
+
+.navigation {
+  display: none;
+  justify-content: center;
+  position: absolute;
+  margin: 20px auto !important;
+}
+
+#access-website {
+  background-color: red;
+}
+
+#another-question {
+  background-color: yellow;
+}
+
+#close-tab {
+  background-color: green;
+}
