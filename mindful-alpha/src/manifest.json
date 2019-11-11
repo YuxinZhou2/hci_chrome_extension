@@ -11,13 +11,23 @@
     "default_title": "mindful-alpha",
     "default_popup": "popup/popup.html"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.facebook.com/*",
+        "https://www.messenger.com/*",
+        "https://www.reddit.com/*"
+      ],
+      "js": ["jquery-3.4.1.min.js", "content.js"],
+      "css": ["css/questions.css"]
+    }
+  ],
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "scripts": ["background.js"]
   },
   "options_ui": {
     "page": "options/options.html",
     "chrome_style": true
-  }
+  },
+  "permissions": ["tabs", "activeTab"]
 }
