@@ -1,1 +1,41 @@
+body {
+  width: 250px;
+  height: 150px;
   margin: 15px;
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  text-align: center;
+}
+
+label {
+  font-size: 15px;
+}
+
+button {
+  margin: 4px;
+  padding: 5px;
+}
+
+/*-----Popup home page--------*/
+.coding-settings {
+  /*display: none;*/
+  position: relative;
+}
+.languages-settings {
+  display: none;
+}
+
+.customize-settings {
+  display: none;
+}
+
+.back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/*-----Popup Blacklist page-----*/
