@@ -23,6 +23,178 @@
         "None of the above"
       ],
       "index": 0
+    },
+    {
+      "programmingLanguage": "C",
+      "difficulty": "medium",
+      "question": "The format identifier ‘%i’ is also used for _____ data type.",
+      "answers": ["char", "int", "float", "double"],
+      "index": 1
+    },
+    {
+      "programmingLanguage": "C",
+      "difficulty": "easy",
+      "question": "What is the size of an int data type",
+      "answers": [
+        "4 Bytes",
+        "8 Bytes",
+        "Depends on the system/compiler",
+        "Cannot be determined"
+      ],
+      "index": 2
+    },
+    {
+      "programmingLanguage": "C",
+      "difficulty": "hard",
+      "question": "Which of the following is a correct syntax to pass a Function Pointer as an argument?",
+      "answers": [
+        "void pass(int (*fptr)(int, float, char)){}",
+        "void pass(*fptr(int, float, char)){}",
+        "void pass(int (*fptr)){}",
+        "void pass(*fptr){}"
+      ],
+      "index": 0
+    },
+    {
+      "programmingLanguage": "C",
+      "difficulty": "medium",
+      "question": "How to call a function without using the function name to send parameters?",
+      "answers": [
+        "typedefs",
+        "Function pointer",
+        "Both typedefs and Function pointer",
+        "None of the mentioned"
+      ],
+      "index": 1
+    },
+    {
+      "programmingLanguage": "C",
+      "difficulty": "medium",
+      "question": "Which of following is not accepted in C?",
+      "answers": [
+        "static a = 10; //static as",
+        "static int func (int); //parameter as static",
+        "static static int a; //a static variable prefixed with static",
+        "all of the mentioned"
+      ],
+      "index": 2
+    },
+    {
+      "programmingLanguage": "C",
+      "difficulty": "hard",
+      "question": "Which data type is most suitable for storing a number 65000 in a 32-bit system",
+      "answers": ["signed short", "unsigned short", "long", "int"],
+      "index": 1
+    },
+    {
+      "programmingLanguage": "C",
+      "difficulty": "hard",
+      "question": "Which of the following is a User-defined data type",
+      "answers": [
+        "typedef int Boolean",
+        "typedef enum {Mon, Tue, Wed, Thu, Fri} Workdays",
+        "struct {char name[10], int age}",
+        "all of the mentioned"
+      ],
+      "index": 3
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "",
+      "question": "hard",
+      "answers": [
+        "Inheritance",
+        "Encapsulation",
+        "Polymorphism",
+        "Compilation"
+      ],
+      "index": 3
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "hard",
+      "question": "Which of the following is a type of polymorphism in Java",
+      "answers": [
+        "Compile time polymorphism",
+        "Execution time polymorphism",
+        "Multiple polymorphism",
+        "Multilevel polymorphism"
+      ],
+      "index": 0
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "medium",
+      "question": "When does method overloading is determined",
+      "answers": [
+        "At run time",
+        "At compile time",
+        "At coding time",
+        "At execution time"
+      ],
+      "index": 1
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "hard",
+      "question": "Which of these operators is used to allocate memory for an object?",
+      "answers": ["malloc", "alloc", "new", "give"],
+      "index": 2
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "medium",
+      "question": "Which concept of Java is a way of converting real world objects in terms of class",
+      "answers": [
+        "Polymorphism",
+        "Encapsulation",
+        "Abstraction",
+        "Inheritance"
+      ],
+      "index": 2
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "Which of the following is a valid declaration of an object of class Box",
+      "question": "easy",
+      "answers": [
+        "Box obj = new Box()",
+        "Box obj = new Box",
+        "obj = new Box()",
+        "new Box obj"
+      ],
+      "index": 0
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "medium",
+      "question": "Which of these statement is incorrect",
+      "answers": [
+        "Every class must contain a main() method",
+        "Applets do not require a main() method at all",
+        "There can be only one main() method in a program",
+        "main() method must be made public"
+      ],
+      "index": 0
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "medium",
+      "question": "Which of the following statements is correct",
+      "answers": [
+        "Public method is accessible to all other classes in the hierarchy",
+        "Public method is accessible only to subclasses of its parent class",
+        "Public method can only be called by object of its class",
+        "Public method can be accessed by calling object of the public class"
+      ],
+      "index": 1
+    },
+    {
+      "programmingLanguage": "Java",
+      "difficulty": "easy",
+      "question": "Which of these keywords is used to make a class",
+      "answers": ["class", "struct", "int", "none of the mentioned"],
+      "index": 0
     }
   ]
 }
