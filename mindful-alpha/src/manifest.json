@@ -19,7 +19,7 @@
         "https://www.messenger.com/*",
         "https://www.reddit.com/*"
       ],
-      "js": ["question/jquery-3.4.1.min.js", "question/question.js"],
+      "js": ["question/question.js"],
       "css": ["css/questions.css"]
     }
   ],
@@ -30,5 +30,5 @@
     "page": "options/options.html",
     "chrome_style": true
   },
-  "permissions": ["tabs", "activeTab"]
+  "permissions": ["tabs", "activeTab", "storage"]
 }

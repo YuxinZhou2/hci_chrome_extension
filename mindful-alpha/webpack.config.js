@@ -108,7 +108,8 @@ const config = {
 
           return JSON.stringify(jsonContent, null, 2);
         }
-      }
+      },
+      { from: "css", to: "css" }
     ])
   ]
 };
