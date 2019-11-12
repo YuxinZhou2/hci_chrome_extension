@@ -1,0 +1,28 @@
+{
+  "coding": [
+    {
+      "programmingLanguage": "C",
+      "difficulty": "easy",
+      "question": "What is C",
+      "answers": [
+        "A programming language",
+        "Alphabet letter",
+        "Vitamin",
+        "None of the above"
+      ],
+      "index": 0
+    },
+    {
+      "programmingLanguage": "C",
+      "difficulty": "easy",
+      "question": "What is argv",
+      "answers": [
+        "A programming language",
+        "Alphabet letter",
+        "Vitamin",
+        "None of the above"
+      ],
+      "index": 0
+    }
+  ]
+}
