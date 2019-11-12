@@ -1,0 +1,74 @@
+{
+  "language": [
+    {
+      "language": "spanish",
+      "difficulty": "hard",
+      "question": "Fill in the blank: My coat is old. Mi ____ está viejo.",
+      "answers": ["abriga", "bluso", "abriga", "faldo"],
+      "index": 2
+    },
+    {
+      "language": "spanish",
+      "difficulty": "hard",
+      "question": "Fill in the blank: The blouse is green. La ____ es verde.",
+      "answers": ["camo", "abriga", "seda", "blusa"],
+      "index": 3
+    },
+    {
+      "language": "spanish",
+      "difficulty": "hard",
+      "question": "Fill in the blank: Those pants are dirty. Esos pantalones están ____.",
+      "answers": ["suicos", "suicas", "limpios", "vierda"],
+      "index": 1
+    },
+    {
+      "language": "spanish",
+      "difficulty": "easy",
+      "question": "Fill in the blank: I am happy. Yo estoy ___.",
+      "answers": ["contente", "contenta", "contento", "contenti"],
+      "index": 2
+    },
+    {
+      "language": "spanish",
+      "difficulty": "easy",
+      "question": "Fill in the blank: The teacher is happy. El maestro está ___",
+      "answers": ["enojada", "enojados", "enojado", "enojadi"],
+      "index": 2
+    },
+    {
+      "language": "spanish",
+      "difficulty": "easy",
+      "question": "Fill in the blank: My brother is angry. Mi hermano está ___",
+      "answers": ["contente", "contenta", "contento", "contenti"],
+      "index": 2
+    },
+    {
+      "language": "spanish",
+      "difficulty": "medium",
+      "question": "Fill in the blank: Are there carrots in the soup?. ¿Hay ____s en la sopa?",
+      "answers": ["zanahoria", "zanahora", "carrothoria", "manzana"],
+      "index": 0
+    },
+    {
+      "language": "spanish",
+      "difficulty": "medium",
+      "question": "Fill in the blank: Are there toasts for breakfast?. ¿Hay ___ para desayunar?",
+      "answers": ["enchilados", "enchiladas", "tostadas", "toastas"],
+      "index": 2
+    },
+    {
+      "language": "spanish",
+      "difficulty": "medium",
+      "question": "Fill in the blank: You ask for milk. Tú pides ___.",
+      "answers": ["lecho", "lecha", "leche", "milko"],
+      "index": 2
+    },
+    {
+      "language": "spanish",
+      "difficulty": "medium",
+      "question": "Fill in the blank: You ask for lunch. Tú pides el ___.",
+      "answers": ["almuerzo", "cena", "almuerza", "aperitivo"],
+      "index": 0
+    }
+  ]
+}
