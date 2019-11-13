@@ -28,13 +28,22 @@
     </div>
     <div v-else-if="selected === 'Languages'" class="languages-settings">
       <h2>Language Questions</h2>
+      <label for="language-picker">Language</label>
+      <select @change="onLanguageChange($event)" id="language-picker">
+        <option value="spanish">Spanish</option>
+      </select>
+      <label for="difficulty-picker">Difficulty</label>
+      <select @change="onLanguageDifficultyChange($event)" id="difficulty-picker">
+        <option value="easy">Easy</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="hard">Hard</option>
+      </select>
     </div>
     <div v-else-if="selected === 'Customized'" class="customize-settings">
       <h2>Customized Questions</h2>
       <textarea v-model="customQuestion" placeholder="add question"></textarea>
       <textarea v-model="customAnswer" placeholder="answer"></textarea>
       <button @click="saveQuestion(customQuestion,customAnswer)">Add</button>
-      <button @click="getQuestions()">see questions</button>
       <div>
         <ul>
           <li v-for="question in customQuestions" v-bind:key="question.customQuestion">{{question}}</li>
@@ -44,6 +53,12 @@
     <div class="blacklist">
       <h2>Blacklist</h2>
       <textarea v-model="blacklist" placeholder="Enter URL"></textarea>
+      <button @click="addBlacksite(blacklist)">Add</button>
+      <div>
+        <ul>
+          <li v-for="blacklist in blacklists" v-bind:key="blacklist.id">{{blacklist}}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -56,54 +71,56 @@ export default {
       customQuestions: [],
       customQuestion: "",
       customAnswer: "",
+      blacklists: [],
       blacklist: "",
       question: ""
     };
   },
   created: function() {
     chrome.storage.local.get(["customQuestions"], result => {
-      console.log(result);
       this.customQuestions = JSON.parse(result.customQuestions);
     });
 
     chrome.storage.local.get(["questionType"], result => {
-      console.log(result.questionType);
       this.selected = result.questionType;
-      console.log(this.selected);
+    });
+
+    chrome.storage.local.get(["blacklists"], result => {
+      this.blacklists = result.blacklists;
+      console.log(this.blacklists);
     });
   },
   methods: {
-    onChange(event) {
+    onChange: function(event) {
       alert(event.target.value);
       chrome.storage.local.set({ questionType: event.target.value });
     },
-    onCodingLanguageChange(event) {
+    onCodingLanguageChange: function(event) {
       chrome.storage.local.set({ codingLanguage: event.target.value });
     },
-    onCodingDifficultyChange(event) {
+    onCodingDifficultyChange: function(event) {
       chrome.storage.local.set({ codingDifficulty: event.target.value });
     },
+    addBlacksite: function(blacklist) {
+      let bl =
+        chrome.storage.local.get(["blacklists"], result => {
+          this.blacklists.push(blacklist);
+        }) | [];
+
+      chrome.storage.local.set({
+        blacklists: blacklists
+      });
+      console.log(this.blacklists);
+    },
     saveQuestion: function(customQuestion, customAnswer) {
-      console.log(customQuestion);
-      console.log(customAnswer);
       let customQuestions =
         JSON.parse(chrome.storage.local.get(["customQuestions"])) | [];
       customQuestions.push({
         customQuestion: customQuestion,
         customAnswer: customAnswer
       });
-      chrome.storage.local.set(
-        {
-          customQuestions: JSON.stringify(customQuestions)
-        },
-        function() {
-          alert("question saved!");
-        }
-      );
-    },
-    getQuestions: function() {
-      chrome.storage.local.get(["customQuestions"], function(result) {
-        console.log(result);
+      chrome.storage.local.set({
+        customQuestions: JSON.stringify(customQuestions)
       });
     }
   }

@@ -2,14 +2,37 @@
   <div class="binyuan">
     <div class="question-modal">
       <p>{{codingQuestions[questionIndex].question}}</p>
-      <button value="0" @click="handleButton($event)">{{codingQuestions[questionIndex].answers[0]}}</button>
-      <button value="1" @click="handleButton($event)">{{codingQuestions[questionIndex].answers[1]}}</button>
-      <button value="2" @click="handleButton($event)">{{codingQuestions[questionIndex].answers[2]}}</button>
-      <button value="3" @click="handleButton($event)">{{codingQuestions[questionIndex].answers[3]}}</button>
-
-      <div v-if="answered" >
-        <button>Next Question</button>
-        <button>Access Website</button>
+      <button
+        value="0"
+        type="button"
+        class="btn btn-primary btn-lg btn-block"
+        disable
+        @click="handleButton($event)"
+      >{{codingQuestions[questionIndex].answers[0]}}</button>
+      <button
+        value="1"
+        type="button"
+        class="btn btn-primary btn-lg btn-block"
+        disable
+        @click="handleButton($event)"
+      >{{codingQuestions[questionIndex].answers[1]}}</button>
+      <button
+        value="2"
+        type="button"
+        class="btn btn-primary btn-lg btn-block"
+        disable
+        @click="handleButton($event)"
+      >{{codingQuestions[questionIndex].answers[2]}}</button>
+      <button
+        value="3"
+        type="button"
+        class="btn btn-primary btn-lg btn-block"
+        disable
+        @click="handleButton($event)"
+      >{{codingQuestions[questionIndex].answers[3]}}</button>
+      <div v-if="answered">
+        <button @click="nextQuestion()">Next Question</button>
+        <button @click="accessWebsite()">Access Website</button>
       </div>
     </div>
   </div>
@@ -20,23 +43,31 @@ import codingQuestions from "./codingQuestions.json";
 export default {
   data() {
     return {
+      blacklists: [],
       codingQuestions: [],
       questionIndex: 0,
       answered: false
     };
   },
   methods: {
+    accessWebsite: function() {
+      var el = document.getElementsByClassName("binyuan")[0];
+      el.style.display = "none";
+    },
+    nextQuestion: function() {
+      this.questionIndex++;
+      this.answered = false;
+    },
     handleButton: function(event) {
       event.preventDefault();
-      if (event.target.value == this.codingQuestions[this.questionIndex].index) {
-        // correct question
-        // display options
-        this.answered = true;
-        //this.questionIndex++;
+      if (
+        event.target.value == this.codingQuestions[this.questionIndex].index
+      ) {
+        event.target.style.backgroundColor = "green";
       } else {
-        // incorrect answer
-        // show good alert
+        event.target.style.backgroundColor = "red";
       }
+      this.answered = true;
     },
     shuffle: function(array) {
       var currentIndex = array.length,
@@ -60,7 +91,7 @@ export default {
   },
   created: function() {
     this.codingQuestions = codingQuestions.coding;
-    console.log(codingQuestions.coding);
+
     chrome.storage.local.get(["codingLanguage"], result => {
       this.codingQuestions = codingQuestions.filter(el => {
         codingQuestions.filter(el => {
@@ -71,7 +102,7 @@ export default {
           this.codingQuestions = codingQuestions.filter(el => {
             el.codingDifficulty == result.codingDifficulty;
           });
-          shuffle(this.codingQuestions);
+          this.codingQuestions = shuffle(this.codingQuestions);
         });
       });
     });
@@ -86,11 +117,11 @@ export default {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed !important;
   top: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  z-index: 500;
-  overflow-y: hidden;
+  z-index: 5000000;
+  overflow-y: hidden !important;
 }
 
 .question-modal {
@@ -103,4 +134,5 @@ export default {
   justify-content: center;
   border-radius: 4px;
 }
+@import "~bootstrap/dist/css/bootstrap.css";
 </style>
