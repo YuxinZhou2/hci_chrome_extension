@@ -14,11 +14,7 @@
 
   "content_scripts": [
     {
-      "matches": [
-        "https://www.facebook.com/*",
-        "https://www.messenger.com/*",
-        "https://www.reddit.com/*"
-      ],
+      "matches": ["<all_urls>"],
       "js": ["question/question.js"],
       "css": ["css/questions.css"]
     }
