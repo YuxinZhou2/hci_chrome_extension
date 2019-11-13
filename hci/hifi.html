@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>HCI Notebook</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="style/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="style/carousel.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">Mindful - Notebook</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Project Proposal </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="lofi.html">Lo-Fi Prototype</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="hifi.html"
+                  >Hi-Fi Prototype<span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="feedback.html">Formative Feedback</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="alpha.html">Alpha System</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-lg-12 text-left">
+          <div class="text-center">
+            <h1 class="mt-5">Hi-Fi Prototype</h1>
+          </div>
+          <br />
+          <h2>User Manual</h2>
+          <p>
+            Please download the user manual here:
+            <a href="pdf/usermanual.pdf">User Manual</a>
+          </p>
+          <br />
+
+          <br />
+          <h2>Design Evolution</h2>
+
+          <!-- <h4>
+            “On/Off” Setting added to enable and disable the extension at hand
+          </h4>
+          <p>
+            Many of our evaluators expressed that they would like the option to
+            enable and disable the extension from the setting popup, because
+            they would find it irritating to always have the extension enabled,
+            and they don’t want to have to delete the extension every time they
+            have days off.
+          </p> -->
+
+          <h4>Prompt” tab in settings reduced usability, removed.</h4>
+          <p>
+            Initially, we had designed a “prompt” tab in the settings menu so
+            that the user could personalize the question bank and add their own
+            questions that they wanted displayed in the app popups. Through our
+            testing and feedback, we noticed that many people didn’t understand
+            what we meant by “prompt” and that when we explained it to them,
+            they didn’t seem to understand nor need this feature, which is why
+            we removed it in the high-fidelity prototype.
+          </p>
+
+          <h4>Allowed access to website after wrong answer.</h4>
+          <p>
+            Many of our evaluators expressed that they were getting irritated
+            when they answered the question wrong and weren’t given access to
+            the website they wanted to access. They expressed that they felt
+            “forced” to answer, and that this would lead them to uninstall the
+            app after a few attempts and wrong answers.
+          </p>
+
+          <h4>“Keep Learning” button changed to “Another Question”</h4>
+          <p>
+            Some of our evaluators expressed that the “Keep Learning” button
+            displayed after answering the question right was misleading, and
+            that they didn’t know if it meant that it would redirect them to a
+            previous page where they were learning, or that it would give them
+            another question to answer, which is what we intended it for. To
+            increase usability and comprehension, we simply changed this button
+            to “Another Question”.
+          </p>
+
+          <h4>Settings button removed from Main popup to avoid confusion</h4>
+          <p>
+            When we asked our evaluators how they would access the settings,
+            nearly all of them decided to click the chrome extension button
+            displayed on the top right corner of the browser. Almost none of
+            them clicked the settings button displayed on the popup page, and
+            some thought that the placement of the settings button in the bottom
+            right was misleading and confused it for a “Continue” button. We
+            removed this button entirely to increase usability.
+          </p>
+
+          <h4>
+            Additional information added to “Repeat interval” and “# Questions”
+            settings
+          </h4>
+          <p>
+            Many of our evaluators did not understand what the purpose of the
+            “Repeat interval” and “# Questions” settings were. To clarify its
+            purpose, we decided to add an information popup when the user hovers
+            over the app so that it would explain their purpose, which increases
+            usability.
+          </p>
+
+          <br />
+          <br />
+          <h2>Prototype Implementation</h2>
+          <p>
+            Please download the application here:
+            <a href="mindful-master.zip">Mindful</a>
+          </p>
+          <P>Follow the User Manual to install it.</P>
+
+          <br />
+          <br />
+          <h2>User population</h2>
+          <p>
+            The user population for our application consists of primarily
+            university students working on their personal computers, since
+            they’re prone to having a lot of work to do and many reasons to get
+            distracted from said work while they’re navigating the web.
+            Although, any student who is studying on their personal computer
+            would be a good candidate for our user population, these students
+            would ideally fit into the three personas described in our proposal
+            (i.e. “Angela, the Socialite”, “the Bro” or “Joseph, the
+            Productivity Junky”). Please refer to these in our proposal to get
+            an idea of who to test the application on. Furthermore, the user
+            population should be familiar with the Chrome Browser, and
+            comfortable with adding extensions to the browser to increase their
+            productivity. The user population shouldn’t be using a public
+            computer, since it is unlikely that they are willing to add
+            extensions to the Chrome Browser.
+          </p>
+
+          <br />
+          <br />
+          <h2>Usability goals</h2>
+          <h4>
+            The task required before accessing the blocked website is feasible
+          </h4>
+          <p>
+            The user can access the website they desired after going through the
+            application (yes/no).
+          </p>
+
+          <h4>The user can easily navigate the application</h4>
+          <p>
+            The user doesn’t take longer than 20 seconds to find the settings
+            page.
+          </p>
+
+          <h4>
+            The user can easily understand what task they have to do to access
+            their blocked website
+          </h4>
+          <p>
+            The user answers the question under 60 seconds the first time they
+            use the app.
+          </p>
+
+          <h4>
+            The task required before accessing the blocked website isn’t too
+            easy
+          </h4>
+          <p>The user takes at least 10 seconds to complete the task.</p>
+
+          <br />
+          <br />
+          <h2>Usability Test Procedure</h2>
+          <p>
+            The following questions will help you set up the usability
+            procedure:
+          </p>
+
+          <h4>How many examiners are required?</h4>
+          <p>
+            For this application, two examiners will be required. One examiner
+            will tell the user what to do, and the other will time the tasks and
+            take notes on the user’s comments.
+          </p>
+
+          <h4>What equipment will the examiners need?</h4>
+          <p>
+            For equipment, you will need a laptop with internet access, as well
+            as our application “Mindful” installed on the Chrome browser. To
+            install “Mindful”, please refer to the steps outlined in the User
+            Manual above.
+          </p>
+          <h4>How should your prototype be handled? (manual/documentation)</h4>
+          <p>
+            The prototype should be activated through the chrome extension and
+            ready for the user to use. To make sure that the application works.
+            Please ensure that the application appears when you go on
+            “facebook.com”. To get a thorough usage guide of the application,
+            please refer to the User Manual.
+          </p>
+          <h4>How will you instruct your examiners to proceed?</h4>
+          <p>
+            The examiners should introduce the user to the application by
+            telling them the purpose of the application. The following template
+            will suffice:
+          </p>
+
+          <p class="lead">
+            “Mindful is a Chrome Extension which allows the user to set a layer
+            between themselves and distracting websites. This layer takes the
+            form of questions that are asked the user before accessing the
+            website, so that the user is reminded that this website is
+            distracting, as well as improving lateral knowledge that they would
+            otherwise not have time to improve”
+          </p>
+
+          <p>Then, tell the user the purpose of this test:</p>
+          <p class="lead">
+            “The purpose of this test is to evaluate the usability of the
+            application, and determine if it is intuitive and easy to use based
+            on a few criteria. It’s important to note that it is the application
+            that is being evaluated, and not the user.”
+          </p>
+          <p>Lastly, tell the user to complete these tasks, and time them:</p>
+          <ol>
+            <li>Go to the application settings.</li>
+            <li>Add “facebook.com” to the list of blacklisted websites.</li>
+            <li>Try to access “facebook.com”.</li>
+            <li>Complete the task required.</li>
+            <li>Try to get another question to answer</li>
+            <li>
+              Try to get to the front page of facebook.
+            </li>
+          </ol>
+          <h4>
+            How should the examiners treat the test subjects, what should they
+            tell them?
+          </h4>
+          <p>
+            The examiners should emphasize to the test subjects that is the
+            application that is being evaluated, not them. This is to ensure
+            that the user feels comfortable and doesn’t feel inadequate when
+            they make errors. They examiner should emphasize that if the user
+            makes an error, it will ensure that these errors don’t reoccur when
+            the application is built.
+          </p>
+          <h4>What should the examiners avoid doing?</h4>
+          <p>
+            The examiners should avoid influencing the subjects or guide them in
+            any way to complete the tasks required, other than a high-level
+            instruction of what the tasks are (as instructed in the list above.
+          </p>
+          <h4>What should the examiners avoid telling the test subjects?</h4>
+          <p>
+            At any point, the examiner should avoid telling the user how to
+            complete the task. For example, if the user asks “where is the
+            settings page?", the examiner shouldn’t tell them where it is.
+          </p>
+          <h4>What/How/When should the examiners measure?</h4>
+          <p>
+            Throughout each test, the examiner should measure how much time it
+            takes the user to complete each task, which are directly related to
+            the usability goals, and take notes on any additional comments the
+            test subjects have on the features of the application, as well as
+            whenever they find the application confusing or irritating.
+          </p>
+
+          <br />
+          <br />
+          <h2>Reporting</h2>
+          <p>
+            All throughout the tests, the examiners are required to take written
+            notes about any comments, feedback, irritations and suggestions from
+            the test subjects. It is important to take notes on all the little
+            details, such as when a user hesitates before clicking a button, or
+            when they ask questions because they don’t understand how to
+            complete a task. No structure is required for these comments. As for
+            the usability goals, the examiners are required to report a
+            quantitative measure related to the usability goals in tabular form
+            (as listed above, where appropriate), and indicate if the goals were
+            met or not. It is important that the examiners write a possible
+            justification or comment related to the user’s performance related
+            to each goal, so that the implications of the test outcomes are
+            highlighted.
+          </p>
+
+          <h2>Usability Evaluation</h2>
+          <p>
+            To evaluate our application, we will use the following heuristics
+            three heuristics, i.e. “Visibility of system status”, “Recognition
+            rather than recall” and “Aesthetic and minimalist design”, from
+            Nielsen’s “10 Usability Heuristics for User Interface Design”, which
+            correlate with our usability goals.
+          </p>
+          <p>
+            These three heuristics are a central theme in all of our usability
+            goals. Ideally, we want the user to be able to use the application
+            quickly without ever having touched the user manual. This requires
+            that all the functions of the application, including current status,
+            to be easily visible, recognisable, as well as be very minimalistic
+            in order for the user to not be able to understand what they have to
+            do almost immediately. We never want the user to be overloaded and
+            waste too much time reading instructions and understanding tasks,
+            which would lead to them spending more time on the application than
+            we had intended them to in our usability goals. For this reason, we
+            tried our best to design and test our application through
+            prototyping to be simple, intuitive and usable without any external
+            help.
+          </p>
+          <p>
+            The evaluation methodology to evaluate these heuristics is as
+            follows. In order to test if we achieved our usability goals and
+            conform to our three heuristics, we need our evaluators to time the
+            user while they’re accomplishing all of the tasks indicated in the
+            test procedure individually. Furthermore, we need them to take
+            free-form notes on whenever the user is hesitating to complete each
+            one of the tasks required, or when they’re confused and don’t
+            understand what the system is asking them to do or what the task is.
+            In the case that the user could not accomplish the task, they should
+            also note down a justification of why the user couldn’t accomplish
+            it. Once you have this time and comment data, you will use it to
+            answer whether or not our usability goals and usability heuristics
+            were complied with, and indicate your justification next to it.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">A project by Kamy Moussavi and Mia Zhou</span>
+      </div>
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="style/jquery/jquery.slim.min.js"></script>
+    <script src="style/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
