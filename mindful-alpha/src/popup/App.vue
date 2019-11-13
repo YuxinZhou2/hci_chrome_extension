@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Mindful</h1>
+    <label>Choose Category</label>
     <select @change="onChange($event)" v-model="selected">
       <option disabled value>Please select one</option>
       <option>Coding</option>
@@ -56,7 +57,7 @@
       <button @click="addBlacksite(blacklist)">Add</button>
       <div>
         <ul>
-          <li v-for="blacklist in blacklists" v-bind:key="blacklist.id">{{blacklist}}</li>
+          <li v-for="b in blacklists" v-bind:key="b.id">{{b}}</li>
         </ul>
       </div>
     </div>
@@ -110,15 +111,15 @@ export default {
       chrome.storage.local.set({
         blacklists: blacklists
       });
-      console.log(this.blacklists);
     },
     saveQuestion: function(customQuestion, customAnswer) {
       let customQuestions =
-        JSON.parse(chrome.storage.local.get(["customQuestions"])) | [];
-      customQuestions.push({
-        customQuestion: customQuestion,
-        customAnswer: customAnswer
-      });
+        JSON.parse(chrome.storage.local.get(["customQuestions"]), result => {
+          customQuestions.push({
+            customQuestion: customQuestion,
+            customAnswer: customAnswer
+          });
+        }) | [];
       chrome.storage.local.set({
         customQuestions: JSON.stringify(customQuestions)
       });
