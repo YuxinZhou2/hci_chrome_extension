@@ -7,7 +7,7 @@ function gotMessage(message, sender, sendResponse) {
   chrome.storage.local.get("blacklists", result => {
     var list = result.blacklists;
     for (var i = 0; i < list.length; i++) {
-      console.log(list[i]);
+      //creating modal popup only if the url entered is part of the blacklist
       if (message.includes(list[i])) {
         var el = document.createElement("div");
         el.setAttribute("id", "mia");

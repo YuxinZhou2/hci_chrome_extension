@@ -1,35 +1,35 @@
 <template>
   <div class="binyuan">
     <div class="question-modal">
-      <p>{{codingQuestions[questionIndex].question}}</p>
+      <p>{{questions[questionIndex].question}}</p>
       <button
         value="0"
         type="button"
         class="btn btn-primary btn-lg btn-block"
         disable
         @click="handleButton($event)"
-      >{{codingQuestions[questionIndex].answers[0]}}</button>
+      >{{questions[questionIndex].answers[0]}}</button>
       <button
         value="1"
         type="button"
         class="btn btn-primary btn-lg btn-block"
         disable
         @click="handleButton($event)"
-      >{{codingQuestions[questionIndex].answers[1]}}</button>
+      >{{questions[questionIndex].answers[1]}}</button>
       <button
         value="2"
         type="button"
         class="btn btn-primary btn-lg btn-block"
         disable
         @click="handleButton($event)"
-      >{{codingQuestions[questionIndex].answers[2]}}</button>
+      >{{questions[questionIndex].answers[2]}}</button>
       <button
         value="3"
         type="button"
         class="btn btn-primary btn-lg btn-block"
         disable
         @click="handleButton($event)"
-      >{{codingQuestions[questionIndex].answers[3]}}</button>
+      >{{questions[questionIndex].answers[3]}}</button>
       <div v-if="answered">
         <button @click="nextQuestion()">Next Question</button>
         <button @click="accessWebsite()">Access Website</button>
@@ -40,11 +40,13 @@
 
 <script>
 import codingQuestions from "./codingQuestions.json";
+import languageQuestions from "./languageQuestions.json";
+
 export default {
   data() {
     return {
       blacklists: [],
-      codingQuestions: [],
+      questions: [],
       questionIndex: 0,
       answered: false
     };
@@ -60,9 +62,7 @@ export default {
     },
     handleButton: function(event) {
       event.preventDefault();
-      if (
-        event.target.value == this.codingQuestions[this.questionIndex].index
-      ) {
+      if (event.target.value == this.questions[this.questionIndex].index) {
         event.target.style.backgroundColor = "green";
       } else {
         event.target.style.backgroundColor = "red";
@@ -90,21 +90,35 @@ export default {
     }
   },
   created: function() {
-    this.codingQuestions = codingQuestions.coding;
+    chrome.storage.local.get(["questionType"], result => {
+      var type = result.questionType;
+      if (type === "Coding") {
+        this.questions = codingQuestions.coding;
+        chrome.storage.local.get(["codingLanguage"], result => {
+          this.questions = questions.filter(el => {
+            questions.filter(el => {
+              el.codingLanguage == result.codingLanguage;
+            });
 
-    chrome.storage.local.get(["codingLanguage"], result => {
-      this.codingQuestions = codingQuestions.filter(el => {
-        codingQuestions.filter(el => {
-          el.codingLanguage == result.codingLanguage;
-        });
-
-        chrome.storage.local.get(["codingDifficulty"], result => {
-          this.codingQuestions = codingQuestions.filter(el => {
-            el.codingDifficulty == result.codingDifficulty;
+            chrome.storage.local.get(["codingDifficulty"], result => {
+              this.questions = questions.filter(el => {
+                el.codingDifficulty == result.codingDifficulty;
+              });
+              this.questions = shuffle(this.questions);
+            });
           });
-          this.codingQuestions = shuffle(this.codingQuestions);
         });
-      });
+      } else if (type === "Languages") {
+        this.questions = languageQuestions.language;
+        console.log(languageQuestions);
+        chrome.storage.local.get(["languages"], result => {
+          console.log(result);
+        });
+      } else if (type === "customQuestions") {
+        chrome.storage.local.get("customQuestions", result => {
+          this.questions = result.customQuestions;
+        });
+      }
     });
   }
 };

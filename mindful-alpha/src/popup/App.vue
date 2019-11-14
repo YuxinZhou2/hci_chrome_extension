@@ -6,7 +6,7 @@
       <option disabled value>Please select one</option>
       <option>Coding</option>
       <option>Languages</option>
-      <option>Customized</option>
+      <!-- <option>Customized</option> -->
     </select>
     <div v-if="selected === 'Coding'" class="coding-settings">
       <h2>Coding Questions Settings</h2>
@@ -40,17 +40,20 @@
         <option value="hard">Hard</option>
       </select>
     </div>
-    <div v-else-if="selected === 'Customized'" class="customize-settings">
+    <!-- <div v-else-if="selected === 'Customized'" class="customize-settings">
       <h2>Customized Questions</h2>
       <textarea v-model="customQuestion" placeholder="add question"></textarea>
       <textarea v-model="customAnswer" placeholder="answer"></textarea>
-      <button @click="saveQuestion(customQuestion,customAnswer)">Add</button>
+      <button @click="saveQuestion(customQuestion,customAnswer,customQuestions)">Add</button>
       <div>
         <ul>
-          <li v-for="question in customQuestions" v-bind:key="question.customQuestion">{{question}}</li>
+          <li
+            v-for="question in customQuestions"
+            v-bind:key="question.customQuestion"
+          >{{question.customQuestion+ ":"+ question.customAnswer}}</li>
         </ul>
       </div>
-    </div>
+    </div>-->
     <div class="blacklist">
       <h2>Blacklist</h2>
       <textarea v-model="site" placeholder="Enter URL"></textarea>
@@ -70,7 +73,7 @@ export default {
   data() {
     return {
       selected: "",
-      customQuestions: [],
+      customQuestions: [{}],
       customQuestion: "",
       customAnswer: "",
       blacklists: [],
@@ -90,12 +93,10 @@ export default {
 
     chrome.storage.local.get(["blacklists"], result => {
       this.blacklists = result.blacklists;
-      console.log(result.blacklists);
     });
   },
   methods: {
     onChange: function(event) {
-      alert(event.target.value);
       chrome.storage.local.set({ questionType: event.target.value });
     },
     onCodingLanguageChange: function(event) {
@@ -118,21 +119,19 @@ export default {
         blacklists = [];
       });
     },
-    saveQuestion: function(customQuestion, customAnswer) {
-      let customQuestions =
-        JSON.parse(chrome.storage.local.get(["customQuestions"])) | [];
-      customQuestions.push({
-        customQuestion: customQuestion,
-        customAnswer: customAnswer
+    saveQuestion: function(customQuestion, customAnswer, customQuestions) {
+      chrome.storage.local.get({ customQuestions: [] }, result => {
+        var q = result.customQuestions;
+
+        customQuestions.push({
+          customQuestion: customQuestion,
+          customAnswer: customAnswer
+        });
+        chrome.storage.local.set(
+          { customQuestions: this.customQuestions },
+          () => {}
+        );
       });
-      chrome.storage.local.set(
-        {
-          customQuestions: JSON.stringify(customQuestions)
-        },
-        function() {
-          alert("question saved!");
-        }
-      );
     }
   }
 };
