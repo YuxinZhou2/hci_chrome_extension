@@ -114,11 +114,12 @@ export default {
         chrome.storage.local.get(["languages"], result => {
           console.log(result);
         });
-      } else if (type === "customQuestions") {
-        chrome.storage.local.get("customQuestions", result => {
-          this.questions = result.customQuestions;
-        });
       }
+      // } else if (type === "customQuestions") {
+      //   chrome.storage.local.get("customQuestions", result => {
+      //     this.questions = result.customQuestions;
+      //   });
+      // }
     });
   }
 };
