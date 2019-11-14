@@ -15,12 +15,12 @@
         <select @change="onCodingLanguageChange($event)" id="coding-language-picker">
           <option value="java">Java</option>
           <option value="c">C</option>
-          <option value="python">Python</option>
         </select>
       </div>
       <div class="coding-difficulty">
         <label for="difficulty-picker">Difficulty</label>
         <select @change="onCodingDifficultyChange($event)" id="difficulty-picker">
+          <option disabled value>Please select one</option>
           <option value="easy">Easy</option>
           <option value="intermediate">Intermediate</option>
           <option value="hard">Hard</option>
@@ -31,10 +31,12 @@
       <h2>Language Questions</h2>
       <label for="language-picker">Language</label>
       <select @change="onLanguageChange($event)" id="language-picker">
+        <option disabled value>Please select one</option>
         <option value="spanish">Spanish</option>
       </select>
       <label for="difficulty-picker">Difficulty</label>
       <select @change="onLanguageDifficultyChange($event)" id="difficulty-picker">
+        <option disabled value>Please select one</option>
         <option value="easy">Easy</option>
         <option value="intermediate">Intermediate</option>
         <option value="hard">Hard</option>
@@ -83,6 +85,7 @@ export default {
     };
   },
   created: function() {
+    chrome.storage.local.set({ language: "spanish" }, () => {});
     chrome.storage.local.get(["customQuestions"], result => {
       this.customQuestions = JSON.parse(result.customQuestions);
     });
@@ -97,13 +100,28 @@ export default {
   },
   methods: {
     onChange: function(event) {
-      chrome.storage.local.set({ questionType: event.target.value });
+      chrome.storage.local.set({ questionType: event.target.value }, () => {});
     },
     onCodingLanguageChange: function(event) {
-      chrome.storage.local.set({ codingLanguage: event.target.value });
+      chrome.storage.local.set(
+        { codingLanguage: event.target.value },
+        () => {}
+      );
     },
     onCodingDifficultyChange: function(event) {
-      chrome.storage.local.set({ codingDifficulty: event.target.value });
+      chrome.storage.local.set(
+        { codingDifficulty: event.target.value },
+        () => {}
+      );
+    },
+    onLanguageChange(event) {
+      chrome.storage.local.set({ language: event.target.value }, () => {});
+    },
+    onLanguageDifficultyChange(event) {
+      chrome.storage.local.set(
+        { languageDifficulty: event.target.value },
+        () => {}
+      );
     },
     addBlacksite: function(site, blacklists) {
       chrome.storage.local.get({ blacklists: [] }, result => {

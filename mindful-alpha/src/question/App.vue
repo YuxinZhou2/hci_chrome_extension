@@ -53,12 +53,20 @@ export default {
   },
   methods: {
     accessWebsite: function() {
-      var el = document.getElementsByClassName("binyuan")[0];
-      el.style.display = "none";
+      var el = document.getElementsByClassName("binyuan");
+      console.log(el);
+      for (var i = 0; i < el.length; i++) {
+        el[i].style.display = "none";
+      }
     },
     nextQuestion: function() {
       this.questionIndex++;
       this.answered = false;
+      var buttons = document.getElementsByTagName("button");
+      console.log(buttons);
+      for (button in buttons) {
+        button.backgroundColor = "white";
+      }
     },
     handleButton: function(event) {
       event.preventDefault();
@@ -89,30 +97,35 @@ export default {
       return array;
     }
   },
-  created: function() {
+  mounted: function() {
     chrome.storage.local.get(["questionType"], result => {
       var type = result.questionType;
       if (type === "Coding") {
-        this.questions = codingQuestions.coding;
-        chrome.storage.local.get(["codingLanguage"], result => {
-          this.questions = questions.filter(el => {
-            questions.filter(el => {
-              el.codingLanguage == result.codingLanguage;
-            });
-
-            chrome.storage.local.get(["codingDifficulty"], result => {
-              this.questions = questions.filter(el => {
-                el.codingDifficulty == result.codingDifficulty;
-              });
-              this.questions = shuffle(this.questions);
+        chrome.storage.local.get({ codingLanguage: "" }, result => {
+          var codingLanguage = result.codingLanguage;
+          chrome.storage.local.get({ codingDifficulty: "" }, result => {
+            var codingDifficulty = result.codingDifficulty;
+            this.questions = codingQuestions.coding.filter(el => {
+              return (
+                codingLanguage === el.codingLanguage.toLowerCase() &&
+                codingDifficulty === el.difficulty
+              );
             });
           });
         });
       } else if (type === "Languages") {
-        this.questions = languageQuestions.language;
-        console.log(languageQuestions);
-        chrome.storage.local.get(["languages"], result => {
-          console.log(result);
+        chrome.storage.local.get({ language: "" }, result => {
+          var language = result.language;
+          chrome.storage.local.get({ languageDifficulty: "" }, result => {
+            var languageDifficulty = result.languageDifficulty;
+            this.questions = languageQuestions.language.filter(el => {
+              return (
+                language === el.language.toLowerCase() &&
+                languageDifficulty === el.difficulty
+              );
+            });
+            console.log(this.questions);
+          });
         });
       }
       // } else if (type === "customQuestions") {
@@ -135,7 +148,7 @@ export default {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 5000000;
+  z-index: 12345678;
   overflow-y: hidden !important;
 }
 

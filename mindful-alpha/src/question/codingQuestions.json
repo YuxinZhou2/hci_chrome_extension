@@ -1,7 +1,7 @@
 {
   "coding": [
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "easy",
       "question": "What is C",
       "answers": [
@@ -13,7 +13,7 @@
       "index": 0
     },
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "easy",
       "question": "What is argv",
       "answers": [
@@ -25,14 +25,14 @@
       "index": 0
     },
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "medium",
       "question": "The format identifier ‘%i’ is also used for _____ data type.",
       "answers": ["char", "int", "float", "double"],
       "index": 1
     },
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "easy",
       "question": "What is the size of an int data type",
       "answers": [
@@ -44,7 +44,7 @@
       "index": 2
     },
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "hard",
       "question": "Which of the following is a correct syntax to pass a Function Pointer as an argument?",
       "answers": [
@@ -56,7 +56,7 @@
       "index": 0
     },
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "medium",
       "question": "How to call a function without using the function name to send parameters?",
       "answers": [
@@ -68,7 +68,7 @@
       "index": 1
     },
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "medium",
       "question": "Which of following is not accepted in C?",
       "answers": [
@@ -80,14 +80,14 @@
       "index": 2
     },
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "hard",
       "question": "Which data type is most suitable for storing a number 65000 in a 32-bit system",
       "answers": ["signed short", "unsigned short", "long", "int"],
       "index": 1
     },
     {
-      "programmingLanguage": "C",
+      "codingLanguage": "C",
       "difficulty": "hard",
       "question": "Which of the following is a User-defined data type",
       "answers": [
@@ -99,9 +99,9 @@
       "index": 3
     },
     {
-      "programmingLanguage": "Java",
-      "difficulty": "",
-      "question": "hard",
+      "codingLanguage": "Java",
+      "difficulty": "hard",
+      "question": "Which one is not one of the three principle of OOP?",
       "answers": [
         "Inheritance",
         "Encapsulation",
@@ -111,7 +111,7 @@
       "index": 3
     },
     {
-      "programmingLanguage": "Java",
+      "codingLanguage": "Java",
       "difficulty": "hard",
       "question": "Which of the following is a type of polymorphism in Java",
       "answers": [
@@ -123,7 +123,7 @@
       "index": 0
     },
     {
-      "programmingLanguage": "Java",
+      "codingLanguage": "Java",
       "difficulty": "medium",
       "question": "When does method overloading is determined",
       "answers": [
@@ -135,14 +135,14 @@
       "index": 1
     },
     {
-      "programmingLanguage": "Java",
+      "codingLanguage": "Java",
       "difficulty": "hard",
       "question": "Which of these operators is used to allocate memory for an object?",
       "answers": ["malloc", "alloc", "new", "give"],
       "index": 2
     },
     {
-      "programmingLanguage": "Java",
+      "codingLanguage": "Java",
       "difficulty": "medium",
       "question": "Which concept of Java is a way of converting real world objects in terms of class",
       "answers": [
@@ -154,7 +154,7 @@
       "index": 2
     },
     {
-      "programmingLanguage": "Java",
+      "codingLanguage": "Java",
       "difficulty": "Which of the following is a valid declaration of an object of class Box",
       "question": "easy",
       "answers": [
@@ -166,7 +166,7 @@
       "index": 0
     },
     {
-      "programmingLanguage": "Java",
+      "codingLanguage": "Java",
       "difficulty": "medium",
       "question": "Which of these statement is incorrect",
       "answers": [
@@ -178,7 +178,7 @@
       "index": 0
     },
     {
-      "programmingLanguage": "Java",
+      "codingLanguage": "Java",
       "difficulty": "medium",
       "question": "Which of the following statements is correct",
       "answers": [
@@ -190,7 +190,7 @@
       "index": 1
     },
     {
-      "programmingLanguage": "Java",
+      "codingLanguage": "Java",
       "difficulty": "easy",
       "question": "Which of these keywords is used to make a class",
       "answers": ["class", "struct", "int", "none of the mentioned"],
