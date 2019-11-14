@@ -1,38 +1,43 @@
 <template>
   <div class="binyuan">
     <div class="question-modal">
-      <p>{{questions[questionIndex].question}}</p>
-      <button
-        value="0"
-        type="button"
-        class="btn btn-primary btn-lg btn-block"
-        disable
-        @click="handleButton($event)"
-      >{{questions[questionIndex].answers[0]}}</button>
-      <button
-        value="1"
-        type="button"
-        class="btn btn-primary btn-lg btn-block"
-        disable
-        @click="handleButton($event)"
-      >{{questions[questionIndex].answers[1]}}</button>
-      <button
-        value="2"
-        type="button"
-        class="btn btn-primary btn-lg btn-block"
-        disable
-        @click="handleButton($event)"
-      >{{questions[questionIndex].answers[2]}}</button>
-      <button
-        value="3"
-        type="button"
-        class="btn btn-primary btn-lg btn-block"
-        disable
-        @click="handleButton($event)"
-      >{{questions[questionIndex].answers[3]}}</button>
-      <div v-if="answered">
-        <button @click="nextQuestion()">Next Question</button>
-        <button @click="accessWebsite()">Access Website</button>
+      <div v-if="questionsAvailable">
+        <p>{{questions[questionIndex].question}}</p>
+        <button
+          value="0"
+          type="button"
+          class="btn btn-primary btn-lg btn-block"
+          disable
+          @click="handleButton($event)"
+        >{{questions[questionIndex].answers[0]}}</button>
+        <button
+          value="1"
+          type="button"
+          class="btn btn-primary btn-lg btn-block"
+          disable
+          @click="handleButton($event)"
+        >{{questions[questionIndex].answers[1]}}</button>
+        <button
+          value="2"
+          type="button"
+          class="btn btn-primary btn-lg btn-block"
+          disable
+          @click="handleButton($event)"
+        >{{questions[questionIndex].answers[2]}}</button>
+        <button
+          value="3"
+          type="button"
+          class="btn btn-primary btn-lg btn-block"
+          disable
+          @click="handleButton($event)"
+        >{{questions[questionIndex].answers[3]}}</button>
+        <div v-if="answered">
+          <button @click="nextQuestion()">Next Question</button>
+          <button @click="accessWebsite()">Access Website</button>
+        </div>
+      </div>
+      <div v-else>
+        <p>No more questions!</p>
       </div>
     </div>
   </div>
@@ -48,7 +53,8 @@ export default {
       blacklists: [],
       questions: [],
       questionIndex: 0,
-      answered: false
+      answered: false,
+      questionsAvailable: true
     };
   },
   methods: {
@@ -62,10 +68,14 @@ export default {
     nextQuestion: function() {
       this.questionIndex++;
       this.answered = false;
-      var buttons = document.getElementsByTagName("button");
-      console.log(buttons);
-      for (button in buttons) {
-        button.backgroundColor = "white";
+      // var buttons = document.getElementsByClassName(
+      //   "btn btn-primary btn-lg btn-block"
+      // );
+      // for (var i = 0; i < buttons.length; i++) {
+      //   buttons[i].style.backgroundColor = "white";
+      // }
+      if (this.questionIndex > this.questions.length) {
+        this.questionsAvailable = false;
       }
     },
     handleButton: function(event) {
