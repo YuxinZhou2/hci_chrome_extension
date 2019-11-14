@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="mindful-popup">
     <h1>Mindful</h1>
     <label>Choose Category</label>
     <select @change="onChange($event)" v-model="selected">
@@ -53,11 +53,12 @@
     </div>
     <div class="blacklist">
       <h2>Blacklist</h2>
-      <textarea v-model="blacklist" placeholder="Enter URL"></textarea>
-      <button @click="addBlacksite(blacklist)">Add</button>
+      <textarea v-model="site" placeholder="Enter URL"></textarea>
+      <button @click="addBlacksite(site, blacklists)">Add</button>
+      <button @click="removeBlacksite(blacklists)">Remove</button>
       <div>
         <ul>
-          <li v-for="b in blacklists" v-bind:key="b.id">{{b}}</li>
+          <li v-for="blacklist in blacklists" v-bind:key="blacklist.id">{{blacklist}}</li>
         </ul>
       </div>
     </div>
@@ -74,6 +75,7 @@ export default {
       customAnswer: "",
       blacklists: [],
       blacklist: "",
+      site: "",
       question: ""
     };
   },
@@ -88,7 +90,7 @@ export default {
 
     chrome.storage.local.get(["blacklists"], result => {
       this.blacklists = result.blacklists;
-      console.log(this.blacklists);
+      console.log(result.blacklists);
     });
   },
   methods: {
@@ -102,27 +104,35 @@ export default {
     onCodingDifficultyChange: function(event) {
       chrome.storage.local.set({ codingDifficulty: event.target.value });
     },
-    addBlacksite: function(blacklist) {
-      let bl =
-        chrome.storage.local.get(["blacklists"], result => {
-          this.blacklists.push(blacklist);
-        }) | [];
-
-      chrome.storage.local.set({
-        blacklists: blacklists
+    addBlacksite: function(site, blacklists) {
+      chrome.storage.local.get({ blacklists: [] }, result => {
+        var bl = result.blacklists;
+        blacklists.push(site);
+        bl.push(site);
+        chrome.storage.local.set({ blacklists: bl }, () => {});
+      });
+    },
+    removeBlacksite: function(blacklists) {
+      chrome.storage.local.get({ blacklists: [] }, result => {
+        chrome.storage.local.set({ blacklists: [] }, () => {});
+        blacklists = [];
       });
     },
     saveQuestion: function(customQuestion, customAnswer) {
       let customQuestions =
-        JSON.parse(chrome.storage.local.get(["customQuestions"]), result => {
-          customQuestions.push({
-            customQuestion: customQuestion,
-            customAnswer: customAnswer
-          });
-        }) | [];
-      chrome.storage.local.set({
-        customQuestions: JSON.stringify(customQuestions)
+        JSON.parse(chrome.storage.local.get(["customQuestions"])) | [];
+      customQuestions.push({
+        customQuestion: customQuestion,
+        customAnswer: customAnswer
       });
+      chrome.storage.local.set(
+        {
+          customQuestions: JSON.stringify(customQuestions)
+        },
+        function() {
+          alert("question saved!");
+        }
+      );
     }
   }
 };
@@ -131,5 +141,10 @@ export default {
 <style lang="scss" scoped>
 p {
   font-size: 20px;
+}
+
+#bruh {
+  width: 800px;
+  height: 200px;
 }
 </style>
