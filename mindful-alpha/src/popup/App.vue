@@ -12,7 +12,7 @@
       <h2>Coding Questions Settings</h2>
       <div class="coding-language">
         <label for="coding-language-picker">Coding Language</label>
-        <select @change="onCodingLanguageChange($event)" id="coding-language-picker">
+        <select @change="onCodingLanguageChange($event)" v-model="codingLanguagePicker">
           <option value="java">Java</option>
           <option value="c">C</option>
         </select>
@@ -81,7 +81,8 @@ export default {
       blacklists: [],
       blacklist: "",
       site: "",
-      question: ""
+      question: "",
+      codingLanguagePicker: ""
     };
   },
   created: function() {
@@ -90,7 +91,7 @@ export default {
       this.customQuestions = JSON.parse(result.customQuestions);
     });
 
-    chrome.storage.local.get(["questionType"], result => {
+    chrome.storage.local.get({ questionType: "coding" }, result => {
       this.selected = result.questionType;
     });
 
@@ -120,7 +121,9 @@ export default {
     onLanguageDifficultyChange(event) {
       chrome.storage.local.set(
         { languageDifficulty: event.target.value },
-        () => {}
+        () => {
+          alert(event.target.value);
+        }
       );
     },
     addBlacksite: function(site, blacklists) {
