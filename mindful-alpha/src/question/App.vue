@@ -38,6 +38,7 @@
       </div>
       <div v-else>
         <p>No more questions!</p>
+        <button @click="accessWebsite()">Access Website</button>
       </div>
     </div>
   </div>
@@ -173,5 +174,4 @@ export default {
   justify-content: center;
   border-radius: 4px;
 }
-@import "~bootstrap/dist/css/bootstrap.css";
 </style>

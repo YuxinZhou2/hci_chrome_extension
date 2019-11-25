@@ -1,13 +1,14 @@
 <template>
   <div id="mindful-popup">
     <h1>Mindful</h1>
+    <button>test</button>
     <label>Choose Category</label>
-    <select @change="onChange($event)" v-model="selected">
+    <b-form-select @change="onChange($event)" v-model="selected" class="mb-3">
       <option disabled value>Please select one</option>
       <option>Coding</option>
       <option>Languages</option>
       <!-- <option>Customized</option> -->
-    </select>
+    </b-form-select>
     <div v-if="selected === 'Coding'" class="coding-settings">
       <h2>Coding Questions Settings</h2>
       <div class="coding-language">
@@ -163,7 +164,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style>
 p {
   font-size: 20px;
 }
