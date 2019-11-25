@@ -169,7 +169,14 @@ p {
 }
 
 #mindful-popup {
-  background: lightblue;
+  background: #b2dfdb;
+
+  margin-top: -4.7%;
+  padding: 10px;
+  margin-bottom: -100%;
+  margin-left: -4.7%;
+  margin-right: -4.7%;
+  border-style: solid;
 }
 
 #add-button {
