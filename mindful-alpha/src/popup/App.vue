@@ -30,9 +30,10 @@
     <div v-else-if="selected === 'Languages'" class="languages-settings">
       <h2>Language Questions</h2>
       <label for="language-picker">Language</label>
-      <select @change="onLanguageChange($event)" id="language-picker">
+      <select @change="onLanguageChange($event)" v-model="languagePicker">
         <option disabled value>Please select one</option>
         <option value="spanish">Spanish</option>
+        <option value="french">French</option>
       </select>
       <label for="difficulty-picker">Difficulty</label>
       <select @change="onLanguageDifficultyChange($event)" id="difficulty-picker">
@@ -74,6 +75,7 @@
 export default {
   data() {
     return {
+      languagePicker: "",
       selected: "",
       customQuestions: [{}],
       customQuestion: "",
@@ -86,7 +88,12 @@ export default {
     };
   },
   created: function() {
-    chrome.storage.local.set({ language: "spanish" }, () => {});
+    chrome.storage.local.get({ language: "" }, result => {
+      this.languagePicker = result.language;
+    });
+    chrome.storage.local.get({ codingLanguage: "" }, result => {
+      this.codingLanguagePicker = result.codingLanguage;
+    });
     chrome.storage.local.get(["customQuestions"], result => {
       this.customQuestions = JSON.parse(result.customQuestions);
     });
@@ -121,9 +128,7 @@ export default {
     onLanguageDifficultyChange(event) {
       chrome.storage.local.set(
         { languageDifficulty: event.target.value },
-        () => {
-          alert(event.target.value);
-        }
+        () => {}
       );
     },
     addBlacksite: function(site, blacklists) {

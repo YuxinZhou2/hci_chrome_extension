@@ -124,19 +124,20 @@ export default {
           });
         });
       } else if (type === "Languages") {
-        chrome.storage.local.get({ language: "" }, result => {
-          var language = result.language;
-          chrome.storage.local.get({ languageDifficulty: "" }, result => {
-            var languageDifficulty = result.languageDifficulty;
-            this.questions = languageQuestions.language.filter(el => {
-              return (
-                language === el.language.toLowerCase() &&
-                languageDifficulty === el.difficulty
-              );
-            });
-            console.log(this.questions);
-          });
-        });
+        this.questions = languageQuestions.language;
+        // chrome.storage.local.get({ language: "" }, result => {
+        //   var language = result.language;
+        //   chrome.storage.local.get({ languageDifficulty: "" }, result => {
+        //     var languageDifficulty = result.languageDifficulty;
+        //     this.questions = languageQuestions.language.filter(el => {
+        //       return (
+        //         language === el.language.toLowerCase() &&
+        //         languageDifficulty === el.difficulty
+        //       );
+        //     });
+        //     console.log(this.questions);
+        //   });
+        // });
       }
       // } else if (type === "customQuestions") {
       //   chrome.storage.local.get("customQuestions", result => {
