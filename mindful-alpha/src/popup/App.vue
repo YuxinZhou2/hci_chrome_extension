@@ -59,8 +59,8 @@
     <div class="blacklist">
       <h2>Blacklist</h2>
       <textarea v-model="site" placeholder="Enter URL"></textarea>
-      <button @click="addBlacksite(site, blacklists)">Add</button>
-      <button @click="removeBlacksite(blacklists)">Remove</button>
+      <button @click="addBlacksite(site, blacklists)" id="add-button">Add</button>
+      <button @click="removeBlacksite(blacklists)" id="remove-button">Remove</button>
       <div>
         <ul>
           <li v-for="blacklist in blacklists" v-bind:key="blacklist.id">{{blacklist}}</li>
@@ -166,5 +166,17 @@ p {
 #bruh {
   width: 800px;
   height: 200px;
+}
+
+#mindful-popup {
+  background: lightblue;
+}
+
+#add-button {
+  background-color: #008cba;
+}
+
+#remove-button {
+  background-color: #f44336;
 }
 </style>
