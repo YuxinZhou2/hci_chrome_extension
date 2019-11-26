@@ -1,14 +1,18 @@
 <template>
   <div id="mindful-popup">
-    <h1>Mindful</h1>
-    <button>test</button>
+    <header>
+      <div id="logo">
+        <img src="../icons/logo.png" alt="Mindful" />
+        <span id="title">Mindful</span>
+      </div>
+    </header>
     <label>Choose Category</label>
-    <b-form-select @change="onChange($event)" v-model="selected" class="mb-3">
+    <select @change="onChange($event)" v-model="selected" class="mb-3">
       <option disabled value>Please select one</option>
       <option>Coding</option>
       <option>Languages</option>
       <!-- <option>Customized</option> -->
-    </b-form-select>
+    </select>
     <div v-if="selected === 'Coding'" class="coding-settings">
       <h2>Coding Questions Settings</h2>
       <div class="coding-language">
@@ -60,12 +64,16 @@
     </div>-->
     <div class="blacklist">
       <h2>Blacklist</h2>
-      <textarea v-model="site" placeholder="Enter URL"></textarea>
-      <button @click="addBlacksite(site, blacklists)" id="add-button">Add</button>
-      <button @click="removeBlacksite(blacklists)" id="remove-button">Remove</button>
+      <div>
+        <textarea v-model="site" placeholder="Enter URL"></textarea>
+        <button type="button" @click="addBlacksite(site, blacklists)" id="add-button">+</button>
+      </div>
       <div>
         <ul>
-          <li v-for="blacklist in blacklists" v-bind:key="blacklist.id">{{blacklist}}</li>
+          <li v-for="blacklist in blacklists" v-bind:key="blacklist.id">
+            {{blacklist}}
+            <button @click="removeBlacksite(site, blacklists)" id="remove-button">-</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -137,7 +145,9 @@ export default {
         var bl = result.blacklists;
         blacklists.push(site);
         bl.push(site);
-        chrome.storage.local.set({ blacklists: bl }, () => {});
+        chrome.storage.local.set({ blacklists: bl }, () => {
+          console.log(blacklists);
+        });
       });
     },
     removeBlacksite: function(blacklists) {
@@ -165,31 +175,92 @@ export default {
 </script>
 
 <style>
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+
 p {
   font-size: 20px;
 }
-
-#bruh {
-  width: 800px;
-  height: 200px;
+h2 {
+  font-size: 20px !important;
+  text-align: center;
 }
-
+select {
+  border: none;
+  outline: none;
+  width: 200px;
+  padding: 5px !important;
+  background: white;
+}
 #mindful-popup {
-  background: #b2dfdb;
-
-  margin-top: -4.7%;
+  background: white;
   padding: 10px;
-  margin-bottom: -100%;
-  margin-left: -4.7%;
-  margin-right: -4.7%;
-  border-style: solid;
+  width: 300px;
+}
+button {
+  border: none;
+  border-radius: 55% !important;
+  background-color: white;
+  padding: 2px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  justify-content: center;
 }
 
+textarea {
+  border: none;
+  resize: none !important;
+  border-radius: 5px !important;
+  overflow: hidden !important;
+  height: 25px;
+  width: 200px;
+  outline: none;
+  padding: 5px;
+  justify-content: center;
+  font-size: 15px !important;
+}
+.languages-settings,
+.coding-settings {
+  background-color: #fbefef;
+  padding: 20px;
+  border-radius: 5px;
+}
+.mb-3 {
+  width: 280px;
+  background: #fafafa;
+  padding: 5px !important;
+}
+#logo {
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+#title {
+  font-size: 40px;
+  border-color: black;
+}
+img {
+  width: 50px;
+  height: 50px;
+}
+
+.blacklist {
+  border-radius: 5px;
+  padding: 20px;
+  background: #f2f2f2;
+  margin-top: 10px;
+}
 #add-button {
-  background-color: #008cba;
+  margin: 5px;
+  position: relative;
+  background-color: #74df00;
+  border: none;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  justify-content: center;
 }
 
 #remove-button {
-  background-color: #f44336;
 }
 </style>
