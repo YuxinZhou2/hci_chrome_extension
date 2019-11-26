@@ -64,15 +64,18 @@
     </div>-->
     <div class="blacklist">
       <h2>Blacklist</h2>
-      <div>
-        <textarea v-model="site" placeholder="Enter URL"></textarea>
+      <div class="form">
+        <textarea v-model="site" id="site" placeholder="Enter URL"></textarea>
         <button type="button" @click="addBlacksite(site, blacklists)" id="add-button">+</button>
       </div>
       <div>
         <ul>
           <li v-for="blacklist in blacklists" v-bind:key="blacklist.id">
             {{blacklist}}
-            <button @click="removeBlacksite(site, blacklists)" id="remove-button">-</button>
+            <button
+              @click="removeBlacksite(blacklist, blacklists)"
+              id="remove-button"
+            >-</button>
           </li>
         </ul>
       </div>
@@ -141,19 +144,26 @@ export default {
       );
     },
     addBlacksite: function(site, blacklists) {
+      this.site = "";
       chrome.storage.local.get({ blacklists: [] }, result => {
+        console.log("Input: " + site);
         var bl = result.blacklists;
-        blacklists.push(site);
+        this.blacklists.push(site);
         bl.push(site);
-        chrome.storage.local.set({ blacklists: bl }, () => {
-          console.log(blacklists);
-        });
+        console.log(bl);
+        chrome.storage.local.set({ blacklists: bl }, () => {});
       });
     },
-    removeBlacksite: function(blacklists) {
+    removeBlacksite: function(site, blacklists) {
+      console.log(site);
+      for (var i = 0; i < this.blacklists.length; i++) {
+        if (this.blacklists[i] === site) {
+          this.blacklists.splice(i, 1);
+        }
+      }
+      console.log(this.blacklists);
       chrome.storage.local.get({ blacklists: [] }, result => {
-        chrome.storage.local.set({ blacklists: [] }, () => {});
-        blacklists = [];
+        chrome.storage.local.set({ blacklists: this.blacklists }, () => {});
       });
     },
     saveQuestion: function(customQuestion, customAnswer, customQuestions) {
@@ -198,13 +208,8 @@ select {
 }
 button {
   border: none;
-  border-radius: 55% !important;
+  border-radius: 100% !important;
   background-color: white;
-  padding: 2px;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  justify-content: center;
 }
 
 textarea {
@@ -230,10 +235,15 @@ textarea {
   background: #fafafa;
   padding: 5px !important;
 }
+.form {
+  display: flex;
+  align-items: center;
+}
 #logo {
-  text-align: center;
   justify-content: center;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 #title {
   font-size: 40px;
@@ -249,6 +259,7 @@ img {
   padding: 20px;
   background: #f2f2f2;
   margin-top: 10px;
+  vertical-align: top;
 }
 #add-button {
   margin: 5px;
@@ -259,8 +270,22 @@ img {
   color: white;
   text-align: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
 }
 
 #remove-button {
+  position: relative;
+  background: #ff0000;
+  color: white;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>

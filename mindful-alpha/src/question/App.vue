@@ -1,7 +1,7 @@
 <template>
   <div class="binyuan">
     <div class="question-modal">
-      <div v-if="questionsAvailable">
+      <div v-if="questionsAvailable" class="question">
         <p>{{questions[questionIndex].question}}</p>
         <button
           value="0"
@@ -31,9 +31,9 @@
           disable
           @click="handleButton($event)"
         >{{questions[questionIndex].answers[3]}}</button>
-        <div v-if="answered">
-          <button @click="nextQuestion()">Next Question</button>
-          <button @click="accessWebsite()">Access Website</button>
+        <div v-if="answered" id="answered">
+          <button id="nextBtn" @click="nextQuestion()">Next Question</button>
+          <button id="accessBtn" @click="accessWebsite()">Access Website</button>
         </div>
       </div>
       <div v-else>
@@ -69,12 +69,12 @@ export default {
     nextQuestion: function() {
       this.questionIndex++;
       this.answered = false;
-      // var buttons = document.getElementsByClassName(
-      //   "btn btn-primary btn-lg btn-block"
-      // );
-      // for (var i = 0; i < buttons.length; i++) {
-      //   buttons[i].style.backgroundColor = "white";
-      // }
+      var btns = document.getElementsByTagName("button");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].style.backgroundColor = "#f8e0e0";
+        btns[i].disabled = false;
+      }
+
       if (this.questionIndex > this.questions.length) {
         this.questionsAvailable = false;
       }
@@ -82,9 +82,16 @@ export default {
     handleButton: function(event) {
       event.preventDefault();
       if (event.target.value == this.questions[this.questionIndex].index) {
-        event.target.style.backgroundColor = "green";
+        event.target.style.backgroundColor = "#D8F6CE";
       } else {
-        event.target.style.backgroundColor = "red";
+        event.target.style.backgroundColor = "#FF0000";
+      }
+      var btns = document.getElementsByTagName("button");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].disabled = true;
+        if (btns[i].value == this.questions[this.questionIndex].index) {
+          btns[i].style.backgroundColor = "#D8F6CE";
+        }
       }
       this.answered = true;
     },
@@ -149,29 +156,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.binyuan {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: fixed !important;
-  top: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 12345678;
-  overflow-y: hidden !important;
-}
-
-.question-modal {
-  width: 1000px;
-  height: 500px;
-  background-color: white;
-  position: relative;
-  text-align: center;
-  margin: 50px auto;
-  justify-content: center;
-  border-radius: 4px;
-}
-</style>

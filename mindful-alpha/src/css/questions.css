@@ -9,30 +9,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 500;
-  overflow-y: hidden;
+  z-index: 513214134200;
+  overflow-y: hidden !important;
 }
 
 .question-modal {
   width: 1000px;
   height: 500px;
-  background-color: white;
+  background-image: linear-gradient(to bottom right, #f5a9a9, #f6cece, #f8e6e0);
   position: relative;
   text-align: center;
   margin: 50px auto;
   justify-content: center;
   border-radius: 4px;
-}
-
-.question label {
-  padding: 20px;
-  font-size: 20px;
-  position: absolute;
-  text-align: center;
-  margin: 15px auto;
-  -webkit-text-fill-color: black;
-  top: 10px;
-  left: 25%;
 }
 
 .choice-container button {
@@ -45,16 +34,20 @@
 }
 
 button {
-  font-size: 20px;
+  background-color: #f8e0e0;
+  font-size: 20px !important;
   display: block;
   margin: 15px auto !important;
   padding: 8px;
-  border: 1px solid gray;
-  border-radius: 4px;
+  border-radius: 25px;
+  width: 300px;
+  height: 50px;
+  border: none;
+  color: white;
 }
 
 button:hover {
-  background-color: #fafafa;
+  background-color: #fbefef;
 }
 
 .navigation {
@@ -79,16 +72,18 @@ button:hover {
   display: none;
 }
 
-.question2 {
-  display: none;
+p {
+  font-size: 30px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
 }
 
-.question2 label {
-  padding: 20px;
-  font-size: 20px;
-  position: absolute;
-  text-align: center;
-  -webkit-text-fill-color: black;
-  top: 10px;
-  left: 35%;
+#nextBtn,
+#accessBtn {
+  width: 200px !important;
+  background-color: #f5a9a9;
 }
