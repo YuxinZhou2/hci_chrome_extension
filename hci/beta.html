@@ -47,13 +47,13 @@
               <li class="nav-item">
                 <a class="nav-link" href="feedback.html">Formative Feedback</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="alpha.html"
-                  >Alpha System<span class="sr-only">(current)</span></a
-                >
-              </li>
               <li class="nav-item">
-                <a class="nav-link" href="beta.html">Beta System</a>
+                <a class="nav-link" href="alpha.html">Alpha System</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="beta.html"
+                  >Beta System<span class="sr-only">(current)</span></a
+                >
               </li>
             </ul>
           </div>
@@ -66,85 +66,73 @@
       <div class="row">
         <div class="col-lg-12 text-left">
           <div class="text-center">
-            <h1 class="mt-5">Alpha System</h1>
+            <h1 class="mt-5">Beta System</h1>
           </div>
           <br />
           <h2>Design Evolution</h2>
           <p>
-            The alpha system went through multiple evolutions and design changes
+            The beta system went through multiple evolutions and design changes
             that reflect the feedback received previously, as well as our own
             insights. The evolutions are as follows, in order of importance:
           </p>
           <br />
           <h4>
-            Evolution 1: Different Categories and Difficulties of Questions
+            Evolution 1: Improved Aesthetics and Visuals
           </h4>
           <p>
-            The evaluators in our feedback reported that the questions
-            <i>“felt too hard for the target users”</i>, which was students in
-            general. In fact, they claimed that
-            <i
-              >“tough object-oriented programming questions like the ones in the
-              prototype are not suitable for students that have not studied
-              these concepts in general”</i
-            >. We agree with this comment, and concluded that such a difficulty
-            and niche of topic would decrease the usability of the system, and
-            make it too hard to use for the average student. Furthermore, one of
-            our main usability goals was that
-            <i>“the system should not be too hard to use”</i>, and that the user
-            should be able to accomplish the tasks under 60 seconds. To make
-            this goal more attainable by the average student, we added
-            difficulty levels for the questions, such as
-            <i>“easy/medium/hard”</i> as well as different categories
-            altogether, such as “spanish”, so that it’s not only bound to
-            programming.
+            Throughout our testing with the hi-fi prototype and the alpha
+            system, the most common complaint we received was regarding the
+            visual appearance of our application. Most users notably claimed
+            that even if the application worked pretty well, they would never
+            use it in the alpha stage simply because it doesn’t look polished
+            like the Chrome interface they are used to. Since one our our three
+            main usability heuristics from Nielsen's list was
+            <i>Aesthetic and minimalist design</i>, we decided that it would be
+            important to address this usability issue in our beta stage. In
+            fact, we completely rehauled the design of our application as you
+            can see below, following the material design style. This includes a
+            redesign of the system settings, as well as the layer that appears
+            on blacklisted websites.
           </p>
 
           <br />
-          <h4>Evolution 2: Randomized Questions</h4>
+          <h4>Evolution 2: Custom Questions</h4>
           <p>
-            During the Hi-fi prototype testing, our evaluators noticed that the
-            fact that our questions would always come in the same order defeated
-            the purpose of learning. They noticed that the users would simply
-            remember the order of questions that had appeared previously, and
-            memorize the answer patterns, which
-            <i>“defeated the purpose of the prototype”</i>. We agree strongly
-            with this statement. It correlates with one of our usability goals,
-            which was that
-            <i>“the tasks should not be too easy to accomplish”</i>. Indeed, if
-            the user simply remembers the answer’s in order, the task would
-            become too easy, and our usability goal would fail. Therefore, in
-            order to increase usability, we randomized the order of questions in
-            the alpha version.
+            During the Hi-Fi prototype testing, as well as further testing with
+            users, we noticed that our users weren’t satisfied with the limited
+            amount of question categories that were implemented at the time of
+            the alpha stage. In order to make the system more usable to users
+            and target a larger subset of our audience segments, which are
+            students with access to computers, we decided to add custom
+            questions to our application. Now the user can add as many
+            categories of questions as well as custom questions as they like in
+            order to match their preference, as well as make it optimally usable
+            for themselves. This correlates and targets our usability goal that
+            <i>the tasks should not be too irritating to accomplish</i>, which
+            was the case then users had to answer questions that they didn’t
+            find relevant to their interest.
           </p>
           <br />
 
-          <h4>Evolution 3: Minimalized System Settings</h4>
+          <h4>Evolution 3: Reappearing Questions after custom Interval</h4>
           <p>
-            From our own insights using the system, we noticed that the settings
-            were far too complicated to get around once you could actually
-            locate it. in fact, in our feedback, our evaluators highlighted that
-            the
-            <i
-              >"amount of menus for so few functionalities intensified the
-              plugin’s burden."</i
-            >. We agree that our settings menu was indeed very cumbersome, and
-            this decreases the usability of the system. In fact, one of our
-            three main usability heuristics from Nielsen's list was "Aesthetic
-            and minimalist design". In this revision, we concluded that having
-            three different menus for such few settings decreased the aesthetic
-            and minimalism of the system, and would therefore reduce usability.
-            In order to remedy this, we combined the three settings menu into a
-            single one, where the user can make all the necessary system
-            modifications on the same page depending on the category that they
-            choose. This reduces confusion, and makes all the functionalities of
-            the system immediately obvious to the user, which increases
-            usability.
+            Lastly, we noticed during testing that users that answered questions
+            sometimes proceeded to stay on the blacklisted website for dozens of
+            minutes. Since one of our main usability goals is to keep the user
+            mindful whenever they’re on distracting websites, we decided to give
+            the user the option to make the questions reappear after a select
+            amount of time, a setting that can be changed in the settings, as
+            indicated in the user manual. This also targets our usability goal
+            that <i>the tasks should not be too easy to accomplish</i>, which it
+            was when the user would only have to answer only one question before
+            accessing the website. In fact, this feature makes the layer of
+            friction slightly more predominant, and will be a reminder for the
+            user to stay mindful during long periods of distraction
           </p>
           <br /><br />
           <h2>Revised Prototype</h2>
           <p>
-            The revised version of our application (Alpha) consists of all the
+            The revised version of our application (Beta) consists of all the
             changes mentioned above, as well as a few minor tweaks to increase
             usability.
           </p>
