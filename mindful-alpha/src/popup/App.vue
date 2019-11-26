@@ -11,7 +11,7 @@
       <option disabled value>Please select one</option>
       <option>Coding</option>
       <option>Languages</option>
-      <!-- <option>Customized</option> -->
+      <option>Customized</option>
     </select>
     <div v-if="selected === 'Coding'" class="coding-settings">
       <h2>Coding Questions Settings</h2>
@@ -48,20 +48,26 @@
         <option value="hard">Hard</option>
       </select>
     </div>
-    <!-- <div v-else-if="selected === 'Customized'" class="customize-settings">
+    <div v-else-if="selected === 'Customized'" class="customize-settings">
       <h2>Customized Questions</h2>
-      <textarea v-model="customQuestion" placeholder="add question"></textarea>
-      <textarea v-model="customAnswer" placeholder="answer"></textarea>
-      <button @click="saveQuestion(customQuestion,customAnswer,customQuestions)">Add</button>
+      <textarea v-model="customQuestion" placeholder="add question" id="addQuestion"></textarea>
+      <textarea v-model="customAnswer" placeholder="answer" id="addAnswer"></textarea>
+      <button
+        @click="saveQuestion(customQuestion,customAnswer,customQuestions)"
+        id="saveQuestion"
+      >Add</button>
       <div>
         <ul>
-          <li
-            v-for="question in customQuestions"
-            v-bind:key="question.customQuestion"
-          >{{question.customQuestion+ ":"+ question.customAnswer}}</li>
+          <li v-for="question in customQuestions" v-bind:key="question.customQuestion">
+            {{question.customQuestion+ "? "+ question.customAnswer}}
+            <button
+              @click="removeCustomQuestion(question, customQuestions)"
+              class="remove-button"
+            >-</button>
+          </li>
         </ul>
       </div>
-    </div>-->
+    </div>
     <div class="blacklist">
       <h2>Blacklist</h2>
       <div class="form">
@@ -74,7 +80,7 @@
             {{blacklist}}
             <button
               @click="removeBlacksite(blacklist, blacklists)"
-              id="remove-button"
+              class="remove-button"
             >-</button>
           </li>
         </ul>
@@ -89,7 +95,7 @@ export default {
     return {
       languagePicker: "",
       selected: "",
-      customQuestions: [{}],
+      customQuestions: [],
       customQuestion: "",
       customAnswer: "",
       blacklists: [],
@@ -106,8 +112,8 @@ export default {
     chrome.storage.local.get({ codingLanguage: "" }, result => {
       this.codingLanguagePicker = result.codingLanguage;
     });
-    chrome.storage.local.get(["customQuestions"], result => {
-      this.customQuestions = JSON.parse(result.customQuestions);
+    chrome.storage.local.get({ customQuestions: [] }, result => {
+      this.customQuestions = result.customQuestions;
     });
 
     chrome.storage.local.get({ questionType: "coding" }, result => {
@@ -146,34 +152,47 @@ export default {
     addBlacksite: function(site, blacklists) {
       this.site = "";
       chrome.storage.local.get({ blacklists: [] }, result => {
-        console.log("Input: " + site);
         var bl = result.blacklists;
         this.blacklists.push(site);
         bl.push(site);
-        console.log(bl);
         chrome.storage.local.set({ blacklists: bl }, () => {});
       });
     },
     removeBlacksite: function(site, blacklists) {
-      console.log(site);
       for (var i = 0; i < this.blacklists.length; i++) {
         if (this.blacklists[i] === site) {
           this.blacklists.splice(i, 1);
         }
       }
-      console.log(this.blacklists);
       chrome.storage.local.get({ blacklists: [] }, result => {
         chrome.storage.local.set({ blacklists: this.blacklists }, () => {});
       });
     },
+    removeCustomQuestion: function(question, customQuestions) {
+      for (var i = 0; i < this.customQuestions.length; i++) {
+        console.log(this.customQuestions[i]);
+        if (this.customQuestions[i] === question) {
+          this.customQuestions.splice(i, 1);
+        }
+      }
+      chrome.storage.local.get({ customQuestions: [] }, result => {
+        chrome.storage.local.set(
+          { customQuestions: this.customQuestions },
+          () => {}
+        );
+      });
+    },
     saveQuestion: function(customQuestion, customAnswer, customQuestions) {
+      this.customQuestion = "";
+      this.customAnswer = "";
       chrome.storage.local.get({ customQuestions: [] }, result => {
         var q = result.customQuestions;
 
-        customQuestions.push({
+        this.customQuestions.push({
           customQuestion: customQuestion,
           customAnswer: customAnswer
         });
+        console.log(this.customQuestions);
         chrome.storage.local.set(
           { customQuestions: this.customQuestions },
           () => {}
@@ -184,108 +203,4 @@ export default {
 };
 </script>
 
-<style>
-@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
-
-p {
-  font-size: 20px;
-}
-h2 {
-  font-size: 20px !important;
-  text-align: center;
-}
-select {
-  border: none;
-  outline: none;
-  width: 200px;
-  padding: 5px !important;
-  background: white;
-}
-#mindful-popup {
-  background: white;
-  padding: 10px;
-  width: 300px;
-}
-button {
-  border: none;
-  border-radius: 100% !important;
-  background-color: white;
-}
-
-textarea {
-  border: none;
-  resize: none !important;
-  border-radius: 5px !important;
-  overflow: hidden !important;
-  height: 25px;
-  width: 200px;
-  outline: none;
-  padding: 5px;
-  justify-content: center;
-  font-size: 15px !important;
-}
-.languages-settings,
-.coding-settings {
-  background-color: #fbefef;
-  padding: 20px;
-  border-radius: 5px;
-}
-.mb-3 {
-  width: 280px;
-  background: #fafafa;
-  padding: 5px !important;
-}
-.form {
-  display: flex;
-  align-items: center;
-}
-#logo {
-  justify-content: center;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-#title {
-  font-size: 40px;
-  border-color: black;
-}
-img {
-  width: 50px;
-  height: 50px;
-}
-
-.blacklist {
-  border-radius: 5px;
-  padding: 20px;
-  background: #f2f2f2;
-  margin-top: 10px;
-  vertical-align: top;
-}
-#add-button {
-  margin: 5px;
-  position: relative;
-  background-color: #74df00;
-  border: none;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 25px;
-  height: 25px;
-}
-
-#remove-button {
-  position: relative;
-  background: #ff0000;
-  color: white;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-</style>
+<style src="../css/popup.css"></style>

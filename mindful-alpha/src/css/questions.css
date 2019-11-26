@@ -19,11 +19,18 @@
   background-image: linear-gradient(to bottom right, #f5a9a9, #f6cece, #f8e6e0);
   position: relative;
   text-align: center;
-  margin: 50px auto;
+  margin: 50px auto !important;
   justify-content: center;
   border-radius: 4px;
+  padding: 5px;
 }
-
+.question {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .choice-container button {
   max-width: 800px;
   margin: 50px;
@@ -33,7 +40,7 @@
   top: 100px;
 }
 
-button {
+.btn-choices {
   background-color: #f8e0e0;
   font-size: 20px !important;
   display: block;
@@ -46,7 +53,7 @@ button {
   color: white;
 }
 
-button:hover {
+.btn-choices:hover {
   background-color: #fbefef;
 }
 
@@ -72,7 +79,7 @@ button:hover {
   display: none;
 }
 
-p {
+.mp {
   font-size: 30px;
   text-align: center;
   justify-content: center;

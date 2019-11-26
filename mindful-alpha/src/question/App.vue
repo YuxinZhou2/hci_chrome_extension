@@ -2,32 +2,32 @@
   <div class="binyuan">
     <div class="question-modal">
       <div v-if="questionsAvailable" class="question">
-        <p>{{questions[questionIndex].question}}</p>
+        <p class="mp">{{questions[questionIndex].question}}</p>
         <button
           value="0"
           type="button"
-          class="btn btn-primary btn-lg btn-block"
+          class="btn-choices"
           disable
           @click="handleButton($event)"
         >{{questions[questionIndex].answers[0]}}</button>
         <button
           value="1"
           type="button"
-          class="btn btn-primary btn-lg btn-block"
+          class="btn-choices"
           disable
           @click="handleButton($event)"
         >{{questions[questionIndex].answers[1]}}</button>
         <button
           value="2"
           type="button"
-          class="btn btn-primary btn-lg btn-block"
+          class="btn-choices"
           disable
           @click="handleButton($event)"
         >{{questions[questionIndex].answers[2]}}</button>
         <button
           value="3"
           type="button"
-          class="btn btn-primary btn-lg btn-block"
+          class="btn-choices"
           disable
           @click="handleButton($event)"
         >{{questions[questionIndex].answers[3]}}</button>
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div v-else>
-        <p>No more questions!</p>
+        <p class="mp">No more questions!</p>
         <button @click="accessWebsite()">Access Website</button>
       </div>
     </div>
