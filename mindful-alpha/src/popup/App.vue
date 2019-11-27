@@ -13,6 +13,15 @@
       <option>Languages</option>
       <option>Customized</option>
     </select>
+    <label>Repeat Every:</label>
+    <select @change="onTimeChange($event)" v-model="timeInterval" class="mb-3" id="timeSelect">
+      <option disabled value>Please select one</option>
+      <option>5</option>
+      <option>10</option>
+      <option>20</option>
+      <option>25</option>
+    </select>
+    <span>min</span>
     <div v-if="selected === 'Coding'" class="coding-settings">
       <h2>Coding Questions Settings</h2>
       <div class="coding-language">
@@ -24,7 +33,11 @@
       </div>
       <div class="coding-difficulty">
         <label for="difficulty-picker">Difficulty</label>
-        <select @change="onCodingDifficultyChange($event)" id="difficulty-picker">
+        <select
+          @change="onCodingDifficultyChange($event)"
+          id="difficulty-picker"
+          v-model="codingDifficulty"
+        >
           <option disabled value>Please select one</option>
           <option value="easy">Easy</option>
           <option value="intermediate">Intermediate</option>
@@ -41,7 +54,11 @@
         <option value="french">French</option>
       </select>
       <label for="difficulty-picker">Difficulty</label>
-      <select @change="onLanguageDifficultyChange($event)" id="difficulty-picker">
+      <select
+        @change="onLanguageDifficultyChange($event)"
+        v-model="languageDifficulty"
+        id="difficulty-picker"
+      >
         <option disabled value>Please select one</option>
         <option value="easy">Easy</option>
         <option value="intermediate">Intermediate</option>
@@ -102,15 +119,24 @@ export default {
       blacklist: "",
       site: "",
       question: "",
-      codingLanguagePicker: ""
+      codingLanguagePicker: "",
+      timeInterval: "",
+      languageDifficulty: "",
+      codingDifficulty: ""
     };
   },
   created: function() {
+    chrome.storage.local.get({ languageDifficulty: "" }, result => {
+      this.languageDifficulty = result.languageDifficulty;
+    });
     chrome.storage.local.get({ language: "" }, result => {
       this.languagePicker = result.language;
     });
     chrome.storage.local.get({ codingLanguage: "" }, result => {
       this.codingLanguagePicker = result.codingLanguage;
+    });
+    chrome.storage.local.get({ codingDifficulty: "" }, result => {
+      this.codingDifficulty = result.codingDifficulty;
     });
     chrome.storage.local.get({ customQuestions: [] }, result => {
       this.customQuestions = result.customQuestions;
@@ -120,6 +146,10 @@ export default {
       this.selected = result.questionType;
     });
 
+    chrome.storage.local.get({ repeatInterval: "" }, result => {
+      this.timeInterval = result.repeatInterval;
+    });
+
     chrome.storage.local.get(["blacklists"], result => {
       this.blacklists = result.blacklists;
     });
@@ -127,6 +157,12 @@ export default {
   methods: {
     onChange: function(event) {
       chrome.storage.local.set({ questionType: event.target.value }, () => {});
+    },
+    onTimeChange: function(event) {
+      chrome.storage.local.set(
+        { repeatInterval: event.target.value },
+        () => {}
+      );
     },
     onCodingLanguageChange: function(event) {
       chrome.storage.local.set(
@@ -192,7 +228,6 @@ export default {
           customQuestion: customQuestion,
           customAnswer: customAnswer
         });
-        console.log(this.customQuestions);
         chrome.storage.local.set(
           { customQuestions: this.customQuestions },
           () => {}

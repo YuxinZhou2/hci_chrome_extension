@@ -114,3 +114,7 @@ img {
   border: none;
   border-radius: 100% !important;
 }
+
+#timeSelect {
+  width: 100px;
+}
