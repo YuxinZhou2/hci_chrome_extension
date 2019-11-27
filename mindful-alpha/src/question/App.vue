@@ -2,43 +2,50 @@
   <div class="binyuan">
     <div class="question-modal">
       <div v-if="questionsAvailable" class="question">
-        <p class="mp">{{questions[questionIndex].question}}</p>
-        <button
-          value="0"
-          type="button"
-          class="btn-choices"
-          disable
-          @click="handleButton($event)"
-        >{{questions[questionIndex].answers[0]}}</button>
-        <button
-          value="1"
-          type="button"
-          class="btn-choices"
-          disable
-          @click="handleButton($event)"
-        >{{questions[questionIndex].answers[1]}}</button>
-        <button
-          value="2"
-          type="button"
-          class="btn-choices"
-          disable
-          @click="handleButton($event)"
-        >{{questions[questionIndex].answers[2]}}</button>
-        <button
-          value="3"
-          type="button"
-          class="btn-choices"
-          disable
-          @click="handleButton($event)"
-        >{{questions[questionIndex].answers[3]}}</button>
+        <div v-if="!isCustomQuestion">
+          <p class="mp">{{questions[questionIndex].question}}</p>
+          <button
+            value="0"
+            type="button"
+            class="btn-choices"
+            disable
+            @click="handleButton($event)"
+          >{{questions[questionIndex].answers[0]}}</button>
+          <button
+            value="1"
+            type="button"
+            class="btn-choices"
+            disable
+            @click="handleButton($event)"
+          >{{questions[questionIndex].answers[1]}}</button>
+          <button
+            value="2"
+            type="button"
+            class="btn-choices"
+            disable
+            @click="handleButton($event)"
+          >{{questions[questionIndex].answers[2]}}</button>
+          <button
+            value="3"
+            type="button"
+            class="btn-choices"
+            disable
+            @click="handleButton($event)"
+          >{{questions[questionIndex].answers[3]}}</button>
+        </div>
+        <div v-else>
+          <p class="mp">{{questions[questionIndex].customQuestion}}</p>
+          <button @click="showAnswer($event)" class="btn-choices" id="showAnswerBtn">Answer</button>
+          <p v-if="answered" id="customAnswer">{{questions[questionIndex].customAnswer}}</p>
+        </div>
         <div v-if="answered" id="answered">
-          <button id="nextBtn" @click="nextQuestion()">Next Question</button>
-          <button id="accessBtn" @click="accessWebsite()">Access Website</button>
+          <button class="btn-choices" id="nextBtn" @click="nextQuestion()">Next Question</button>
+          <button class="btn-choices" id="accessBtn" @click="accessWebsite()">Access Website</button>
         </div>
       </div>
       <div v-else>
         <p class="mp">No more questions!</p>
-        <button @click="accessWebsite()">Access Website</button>
+        <button class="btn-choices" @click="accessWebsite()">Access Website</button>
       </div>
     </div>
   </div>
@@ -55,16 +62,20 @@ export default {
       questions: [],
       questionIndex: 0,
       answered: false,
-      questionsAvailable: true
+      questionsAvailable: true,
+      isCustomQuestion: false
     };
   },
   methods: {
     accessWebsite: function() {
       var el = document.getElementsByClassName("binyuan");
-      console.log(el);
       for (var i = 0; i < el.length; i++) {
         el[i].style.display = "none";
       }
+    },
+    showAnswer: function(event) {
+      event.target.style.display = "none";
+      this.answered = true;
     },
     nextQuestion: function() {
       this.questionIndex++;
@@ -146,12 +157,14 @@ export default {
         //     console.log(this.questions);
         //   });
         // });
+      } else if (type === "Customized") {
+        this.isCustomQuestion = true;
+        chrome.storage.local.get({ customQuestions: [] }, result => {
+          console.log(result.customQuestions);
+          this.questions = result.customQuestions;
+        });
+        console.log(this.questions);
       }
-      // } else if (type === "customQuestions") {
-      //   chrome.storage.local.get("customQuestions", result => {
-      //     this.questions = result.customQuestions;
-      //   });
-      // }
     });
   }
 };
