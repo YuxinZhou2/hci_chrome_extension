@@ -152,10 +152,11 @@ export default {
     addBlacksite: function(site, blacklists) {
       this.site = "";
       chrome.storage.local.get({ blacklists: [] }, result => {
-        var bl = result.blacklists;
-        this.blacklists.push(site);
-        bl.push(site);
-        chrome.storage.local.set({ blacklists: bl }, () => {});
+        if (site) {
+          result.blacklists.push(site);
+          this.blacklists = result.blacklists;
+        }
+        chrome.storage.local.set({ blacklists: result.blacklists }, () => {});
       });
     },
     removeBlacksite: function(site, blacklists) {
