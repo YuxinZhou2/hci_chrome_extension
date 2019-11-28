@@ -40,7 +40,7 @@
         >
           <option disabled value>Please select one</option>
           <option value="easy">Easy</option>
-          <option value="intermediate">Intermediate</option>
+          <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </select>
       </div>
@@ -61,7 +61,7 @@
       >
         <option disabled value>Please select one</option>
         <option value="easy">Easy</option>
-        <option value="intermediate">Intermediate</option>
+        <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
     </div>
