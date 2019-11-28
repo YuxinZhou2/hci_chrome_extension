@@ -69,6 +69,32 @@
       "question": "Fill in the blank: You ask for lunch. Tú pides el ___.",
       "answers": ["almuerzo", "cena", "almuerza", "aperitivo"],
       "index": 0
+    },
+    {
+      "language": "french",
+      "difficulty": "medium",
+      "question": "Choose the correct translation: Je ne regarde pas très souvent de film.",
+      "answers": [
+        "Why are you crying?",
+        "Why are you wearing a jacket?",
+        "I don't watch movies very often.",
+        "What is the conventional way of doing this."
+      ],
+      "index": 2
+    },
+    {
+      "language": "french",
+      "difficulty": "easy",
+      "question": "Translate boat in french",
+      "answers": ["Bateau", "Baton", "Bar", "Blaireau"],
+      "index": 0
+    },
+    {
+      "language": "french",
+      "difficulty": "hard",
+      "question": "What is the imperative, singular form of aller?",
+      "answers": ["Vas", "Vont", "Va", "Allez"],
+      "index": 2
     }
   ]
 }
