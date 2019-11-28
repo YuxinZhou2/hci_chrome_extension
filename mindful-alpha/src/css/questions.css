@@ -50,7 +50,7 @@
   width: 300px;
   height: 50px;
   border: none;
-  color: black;
+  color: white;
 }
 
 .btn-choices:hover {
@@ -73,7 +73,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  color: black;
+  color: white;
 }
 
 #customAnswer {
